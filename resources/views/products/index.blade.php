@@ -12,10 +12,10 @@
             <div>제품 명 : {{ $product->product_title }}</div>
             <div>제품 가격: {{ $product->product_price }}</div>
 
-            <input type="button" class="watchProduct" value="제품 보기">
+            <button class="watchProduct">제품 보기</button>
             @if(Auth::user()->admin)
-                <button class="alterProduct">제품 정보 수정</button>
-                <button class="deleteProduct" data-del-id="{{ $product->product_id }}">제품 삭제</button>
+                <button class="alterProduct">제품 수정</button>
+                <button class="deleteProduct">제품 삭제</button>
             @endif
         </div>
         <br>

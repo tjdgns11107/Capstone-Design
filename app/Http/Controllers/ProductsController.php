@@ -43,9 +43,9 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         $product = \App\Product::create([
-            'product_title' => $request->product_title,
-            'product_price' => $request->product_price,
-            'product_content' => $request->product_content,
+            'product_title' => $request->title,
+            'product_price' => $request->price,
+            'product_content' => $request->content,
         ]);
 
         return $product;
@@ -59,7 +59,9 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = \App\Product::where('product_id','=',$id)->get()[0];
+
+        return view('products.show', compact('product'));
     }
 
     /**
@@ -70,7 +72,9 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = \App\Product::where('product_id','=',$id)->get()[0];
+
+        return view('products.edit', compact('product'));
     }
 
     /**
@@ -80,9 +84,15 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductsRequest $request, $id)
     {
-        //
+        $product = \App\Product::where('product_id', '=', $id)->update([
+            'product_title' => $request->title,
+            'product_price' => $request->price,
+            'product_content' => $request->content,
+        ]);
+
+        return $id;
     }
 
     /**
