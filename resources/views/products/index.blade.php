@@ -28,7 +28,7 @@
         <input id="addProduct" type="button" value="제품 추가"/>
     @endif
 
-@include('partials.footer')
+    @include('partials.footer')
 
 @stop
 

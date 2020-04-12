@@ -14,19 +14,13 @@ $(document).ready(function(){
     $('#saveProduct').on('click', function(e) {
         e.preventDefault();
 
-        var title = $('#product_title').val();
-        var price = $('#product_price').val();
-        var content = $('#product_content').val();
-
-        console.log(title, price, content);
-        
         $.ajax({
             url: "/products",
             type: 'POST',
             data: {
-                title: title,
-                price: price,
-                content: content,
+                title: $('#product_title').val(),
+                price: $('#product_price').val(),
+                content: $('#product_content').val(),
             },
             success: function() {
                 location.href = '/products';
@@ -57,14 +51,13 @@ $(document).ready(function(){
 
     // 제품 수정 페이지
     $('.alterProduct').on('click', function() {
-        var aid = $(this).parent('div').attr('data-pro-id');
-        console.log(aid);
-
+        var eid = $(this).parent('div').attr('data-pro-id');
+        
         $.ajax({
-            url: '/products/' + aid + "/edit",
+            url: '/products/' + eid + "/edit",
             type: 'GET',
-            success: function(data) {
-                location.href = '/products/' + aid + '/edit';
+            success: function() {
+                location.href = '/products/' + eid + '/edit';
             }
         });
     });
@@ -73,25 +66,21 @@ $(document).ready(function(){
     $('#updateProduct').on('click', function(e) {
         e.preventDefault();
         var upid = $('#updateProduct').closest('#editProduct').attr('data-up-id');
-        console.log(upid);
-
-        var title = $('#product_title').val();
-        var price = $('#product_price').val();
-        var content = $('#product_content').val();
-
 
         if(confirm('정보를 수정 하시겠습니까?')) {
             $.ajax({
-                '_method': 'PATCH',
-                url: '/product/' + upid,
+                url: '/products/' + upid,
                 type: 'patch',
                 data: {
-                    title: title,
-                    price: price,
-                    content: content,
+                    title: $('#product_title').val(),
+                    price: $('#product_price').val(),
+                    content: $('#product_content').val(),
                 },
-                success: function(data) {
+                success: function() {
                     location.href = '/products';
+                },
+                error:function(request,status,error){
+                    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                 }
             });
         }
@@ -99,12 +88,11 @@ $(document).ready(function(){
 
     // 제품 삭제
     $('.deleteProduct').on('click', function() {
-        var pid = $(this).parent('div').attr('data-pro-id');
-        console.log(pid);
+        var did = $(this).parent('div').attr('data-pro-id');
         
         if(confirm('삭제하시겠습니까')) {
             $.ajax({
-                url: "/products/" + pid,
+                url: "/products/" + did,
                 type: 'DELETE',
                 success: function() {
                     location.href = '/products';
