@@ -7,7 +7,13 @@ $(document).ready(function(){
 
     // 제품 생성 페이지 이동
     $('#addProduct').on('click', function() {
-        location.href = "/products/create";
+        $.ajax({
+            url: "/products/create",
+            type: 'GET',
+            success: function() {
+                location.href = "/products/create";
+            }
+        });
     });
 
     // 제품 등록
@@ -77,10 +83,7 @@ $(document).ready(function(){
                     content: $('#product_content').val(),
                 },
                 success: function() {
-                    location.href = '/products';
-                },
-                error:function(request,status,error){
-                    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                    location.href = '/products/' + upid;
                 }
             });
         }
@@ -99,5 +102,20 @@ $(document).ready(function(){
                 }
             });
         }
+    });
+
+    // 주문 페이지로 이동
+    $('#order').on('click', function() {
+        var oid = $(this).attr('data-ord-id');
+        // $.ajax({
+        //     url: "/products/order/" + oid,
+        //     type: 'GET',
+        //     success: function() {
+        //         location.href = '/products/order/' + oid;
+        //     },
+        //     error:function(request,status,error){
+        //         console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        //     }
+        // });
     });
 });

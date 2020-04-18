@@ -1,0 +1,39 @@
+#qna_table {
+    width:950px;
+    
+    border: 1px solid black;
+}
+
+.qna_bar, .qna_question {
+    display: inline-block;
+    padding: 10px;
+}
+
+#qb_id, #ques_id {
+    width: 50px;
+    text-align: center;
+}
+
+#qb_title, #ques_title {
+    width: 500px;
+    text-align: center;
+}
+
+#qb_user, #ques_user {
+    width: 100px;
+    text-align: center;
+}
+
+#qb_created, #ques_created {
+    width: 150px;
+    text-align: center;
+}
+
+#ques_empty {
+    padding: 10px;
+    text-align: center;
+}
+
+#user_id {
+    display: none;
+}

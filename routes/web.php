@@ -12,6 +12,8 @@
 */
 
 
+// 메인 페이지
+
 Route::get('/', 'MainController@index');
 
 // 사용자 가입
@@ -58,7 +60,28 @@ Route::post('auth/change', [
 ]);
 
 
-
-// 구매 페이지
+// 제품 페이지
 
 Route::resource('products', 'ProductsController');
+
+
+// 주문 페이지
+
+// Route::get('products/order/{product}', [
+//     'as' => 'orders.create',
+//     'uses' => 'OrdersController@create',
+// ]);
+
+
+// Route::post('order', [
+//     'as' => 'orders.store',
+//     'uses' => 'OrdersController@store',
+// ]);
+
+// Route::delete()
+
+
+// 질문 페이지
+
+Route::resource('qna', 'QuestionsController');
+

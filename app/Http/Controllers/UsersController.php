@@ -7,6 +7,10 @@ use App\Http\Requests\UsersRequest;
 
 class UsersController extends Controller
 {
+    public function __construct() {
+        $this->middleware('guest');
+    }
+
     public function create() {
         return view('users.create');
     }

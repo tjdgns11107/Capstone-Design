@@ -13,9 +13,11 @@
             <div>제품 가격: {{ $product->product_price }}</div>
 
             <button class="watchProduct">제품 보기</button>
-            @if(Auth::user()->admin)
-                <button class="alterProduct">제품 수정</button>
-                <button class="deleteProduct">제품 삭제</button>
+            @if(Auth::user())
+                @if(Auth::user()->admin)
+                    <button class="alterProduct">제품 수정</button>
+                    <button class="deleteProduct">제품 삭제</button>
+                @endif
             @endif
         </div>
         <br>
@@ -23,9 +25,11 @@
         <div>제품이 없습니다.</div>
     @endforelse
 
-    @if (Auth::user()->admin)
-        <br>
-        <input id="addProduct" type="button" value="제품 추가"/>
+    @if(Auth::user())
+        @if (Auth::user()->admin)
+            <br>
+            <input id="addProduct" type="button" value="제품 추가"/>
+        @endif
     @endif
 
     @include('partials.footer')

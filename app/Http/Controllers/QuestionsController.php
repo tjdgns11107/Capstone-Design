@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\ProductsRequest;
+use App\Http\Requests\QuestionsRequest;
 
-class ProductsController extends Controller
+class QuestionsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +19,9 @@ class ProductsController extends Controller
 
     public function index()
     {
-        $products = \App\Product::get();
+        $questions = \App\Question::get();
 
-        return view('products.index', compact('products'));
+        return view('qna.index', compact('questions'));
     }
 
     /**
@@ -31,7 +31,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('qna.create');
     }
 
     /**
@@ -40,12 +40,12 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductsRequest $request)
+    public function store(QuestionsRequest $request)
     {
-        $product = \App\Product::create([
-            'product_title' => $request->title,
-            'product_price' => $request->price,
-            'product_content' => $request->content,
+        $product = \App\Question::create([
+            'user_id' => $request->user_id,
+            'question_title' => $request->title,
+            'question_content' => $request->content,
         ]);
 
         return $product;
@@ -59,9 +59,9 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        $product = \App\Product::where('product_id','=',$id)->get()[0];
+        $question = \App\Question::where('id','=',$id)->get()[0];
 
-        return view('products.show', compact('product'));
+        return view('qna.show', compact('question'));
     }
 
     /**
@@ -72,9 +72,9 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $product = \App\Product::where('product_id','=',$id)->get()[0];
+        $question = \App\Question::where('id','=',$id)->get()[0];
 
-        return view('products.edit', compact('product'));
+        return view('qna.edit', compact('question'));
     }
 
     /**
@@ -84,15 +84,12 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductsRequest $request, $id)
+    public function update(QuestionsRequest $request, $id)
     {
-        $product = \App\Product::where('product_id', '=', $id)->update([
-            'product_title' => $request->title,
-            'product_price' => $request->price,
-            'product_content' => $request->content,
+        $product = \App\Question::where('id', '=', $id)->update([
+            'question_title' => $request->title,
+            'question_content' => $request->content,
         ]);
-
-        return $id;
     }
 
     /**
@@ -103,7 +100,7 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        \App\Product::where('product_id','=',$id)->delete();
+        \App\Question::where('id','=',$id)->delete();
 
         return $id;
     }

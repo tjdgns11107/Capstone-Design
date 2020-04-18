@@ -21,7 +21,7 @@
                 <li class="top_bar"><a href="{{ route('sessions.destroy') }}" class="top_list">로그아웃</a></li>
         @endguest
                 <li class="top_bar"><a href="{{ route('products.index') }}" class="top_list">주문</a></li>
-                <li class="top_bar"><a href="#" class="top_list">고객센터</a></li>
+                <li class="top_bar"><a href="{{ route('qna.index') }}" class="top_list">고객센터</a></li>
             </ul>
         </div>
 
