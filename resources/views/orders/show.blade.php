@@ -1,0 +1,75 @@
+@extends('headers.header')
+
+@section('content')
+
+    <div id="show_order" class="order_div" data-use-id="{{Auth::user()->id}}">
+
+        <div>
+            <label for="order_id">주문 번호</label>
+            <div id="order_id">{{ $order->id }}</div>
+        </div>
+
+        <br>
+        
+        <div>
+            <label for="order_product_title">제품 명</label>
+            <div id="order_product_title">{{ $order->product->product_title }}</div>
+        </div>
+
+        <br>
+
+        <div>
+            <label for="order_product_price">제품 가격</label>
+            <div id="order_product_price">{{ $order->product->product_price }}</div>
+        </div>
+
+        <br>
+       
+        <div>
+            <label for="buy_user">주문자</label>
+            <div id="buy_user">{{ Auth::user()->user_id }}</div>
+            <!-- "message": "Trying to get property 'user_id' of non-object 해결 필요.. -->
+        </div>
+        
+        <br>
+
+        <div>
+            <label for="send_user">받는 사람</label>
+            <div id="send_user">{{ $order->send_user }}</div>
+        </div>
+
+        <br>
+        
+        <div>
+            <label for="send_address">배송 주소</label>
+            <div id="send_address">{{ $order->send_address }}</div>
+        </div>
+        
+        <br>
+
+        <div>
+            <label for="order_date">주문 날짜</label>
+            <div id="order_date">{{ $order->order_date }}</div>
+        </div>
+
+        <br>
+
+        <div class="order_bar" data-ord-id="{{$order->id}}">
+            <button id="edit_order">주문 수정</button>
+            <button class="delete_order">주문 삭제</button>
+        </div>
+
+        <br>
+
+        <div>
+            <button id="back_order">목록으로</button>
+        </div>
+
+    </div>
+
+@include('partials.footer')
+
+@stop
+
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/js/order.js"></script>

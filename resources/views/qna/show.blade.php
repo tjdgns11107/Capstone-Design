@@ -30,6 +30,23 @@
         <br>
 
         @if(Auth::user())
+            @if(Auth::user()->admin)
+                <div id="answer_bar" data-ans-id="{{ $question->id }}">
+                    <!-- <button id="add_answer">답변 달기</button> -->
+                    <form id="postAnswer" data-ad-ques-id="{{ $question->id }}">
+                        <div>
+                            <label for="answer_content">답변</label>
+                            <input type="text" id="answer_content" class="form-control">
+                        </div>
+                        <button type="submit" id="save_answer">답변 등록</button>
+                    </form>
+                </div>
+            @endif
+        @endif
+
+        <br>
+
+        @if(Auth::user())
             @if(Auth::user()->id == $question->user_id)
                 <div data-ques-id="{{ $question->id }}">
                     <button id="ques_alt">글 수정</button>

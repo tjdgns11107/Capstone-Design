@@ -30,9 +30,6 @@ $(document).ready(function(){
             },
             success: function() {
                 location.href = '/products';
-            },
-            error:function(request,status,error){
-                console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
             }
         });
     });
@@ -102,20 +99,5 @@ $(document).ready(function(){
                 }
             });
         }
-    });
-
-    // 주문 페이지로 이동
-    $('#order').on('click', function() {
-        var oid = $(this).attr('data-ord-id');
-        // $.ajax({
-        //     url: "/products/order/" + oid,
-        //     type: 'GET',
-        //     success: function() {
-        //         location.href = '/products/order/' + oid;
-        //     },
-        //     error:function(request,status,error){
-        //         console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-        //     }
-        // });
     });
 });

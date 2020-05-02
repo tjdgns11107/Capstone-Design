@@ -7,7 +7,7 @@
     <br>
 
     @forelse($products as $product)
-        <div class="productDiv" data-pro-id="{{ $product->product_id }}">
+        <div class="productDiv" data-pro-id="{{ $product->id }}">
             <meta name="csrf-token" content="{{ csrf_token() }}">
             <div>제품 명 : {{ $product->product_title }}</div>
             <div>제품 가격: {{ $product->product_price }}</div>

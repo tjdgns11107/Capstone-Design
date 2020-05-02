@@ -35,7 +35,7 @@
 
         <div>
             @if(Auth::user())
-                <button id="order" data-ord-id="{{ $product->product_id }}">주문하기</button>
+                <button id="order" data-ord-id="{{ $product->id }}">주문하기</button>
             @endif
             <button id="backProducts">목록으로</button>
         </div>
@@ -44,7 +44,7 @@
             @if(Auth::user()->admin)
                 <br>
 
-                <div data-pro-id="{{ $product->product_id }}">
+                <div data-pro-id="{{ $product->id }}">
                     <button class="alterProduct">제품 수정</button>
                     <button class="deleteProduct">제품 삭제</button>
                 </div>
@@ -59,3 +59,4 @@
 
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="/js/product.js"></script>
+<script src="/js/order.js"></script>

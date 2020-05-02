@@ -4,11 +4,11 @@
 
     <div>글 수정</div>
 
-    <form id="editProduct" class="form__auth" data-up-id="{{$product->product_id}}">
+    <form id="editProduct" class="form__auth" data-up-id="{{$product->id}}">
         {!! csrf_field() !!}
         {!! method_field('PATCH') !!}
     
-        <div class="form-group {{ $errors->has('product_id') ? 'has-error' : '' }}">
+        <div class="form-group {{ $errors->has('id') ? 'has-error' : '' }}">
             
         </div>
         

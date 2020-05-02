@@ -3,25 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\ProductsRequest;
+use App\Http\Requests\AnswersRequest;
 
-class ProductsController extends Controller
+class AnswersController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function __construct() {
-        $this->middleware('auth', ['except'=>['index', 'show']]);
-    }
-
     public function index()
     {
-        $products = \App\Product::get();
-
-        return view('products.index', compact('products'));
+        //
     }
 
     /**
@@ -31,7 +24,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        //
     }
 
     /**
@@ -40,15 +33,14 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductsRequest $request)
+    public function store(AnswersRequest $request)
     {
-        $product = \App\Product::create([
-            'product_title' => $request->title,
-            'product_price' => $request->price,
-            'product_content' => $request->content,
+        $answer = \App\Answer::create([
+            'target_id' => $request->id,
+            'answer_content' => $request->content,
         ]);
 
-        return $product;
+        return $answer;
     }
 
     /**
@@ -59,9 +51,9 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        $product = \App\Product::where('id','=',$id)->get()[0];
+        $answer = \App\Answer::where('target_id','=',$id)->get()[0];
 
-        return view('products.show', compact('product'));
+        return compact('answer');
     }
 
     /**
@@ -72,9 +64,7 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $product = \App\Product::where('id','=',$id)->get()[0];
-
-        return view('products.edit', compact('product'));
+        //
     }
 
     /**
@@ -84,15 +74,9 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductsRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $product = \App\Product::where('id', '=', $id)->update([
-            'product_title' => $request->title,
-            'product_price' => $request->price,
-            'product_content' => $request->content,
-        ]);
-
-        return $id;
+        //
     }
 
     /**
@@ -103,8 +87,6 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        \App\Product::where('id','=',$id)->delete();
-
-        return $id;
+        //
     }
 }

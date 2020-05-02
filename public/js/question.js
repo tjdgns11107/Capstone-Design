@@ -105,4 +105,38 @@ $(document).ready(function(){
         }
     });
     
+    // $('#add_answer').on('click', function() {
+    //     var sid = $(this).parent('div').attr('data-ans-id');
+
+    //     $.ajax({
+    //         url: "/qna/answer",
+    //         type: 'get',
+    //         success: function () {
+    //             $('#postAnswer').css('display', 'none');
+    //             $('#add_answer').remove();
+    //         }
+    //     });
+    // });
+
+    // 답변 등록
+    $('#save_answer').on('click', function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: "/qna/answer",
+            type: 'POST',
+            data: {
+                id: $(this).parent('form').attr('data-ad-ques-id'),
+                content: $('#answer_content').val(),
+            },
+            success: function() {
+                location.href = '/qna';
+            },
+            error:function(request,status,error){
+                console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            }
+        });
+    });
+
 });
+

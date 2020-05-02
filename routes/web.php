@@ -67,21 +67,11 @@ Route::resource('products', 'ProductsController');
 
 // 주문 페이지
 
-// Route::get('products/order/{product}', [
-//     'as' => 'orders.create',
-//     'uses' => 'OrdersController@create',
-// ]);
-
-
-// Route::post('order', [
-//     'as' => 'orders.store',
-//     'uses' => 'OrdersController@store',
-// ]);
-
-// Route::delete()
+Route::resource('orders', 'OrdersController');
 
 
 // 질문 페이지
 
 Route::resource('qna', 'QuestionsController');
 
+Route::resource('qna/answer', 'AnswersController');
