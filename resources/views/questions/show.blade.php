@@ -29,28 +29,34 @@
                     <button id="ques_alt">글 수정</button>
                     <button id="ques_del">글 삭제</button>
                 </div>
+                
+                <br>
             @endif
         @endif
 
         @if(isset($answer))
-            <br>
 
             <div>{{ $answer->answer_content }}</div>
 
             <br>
 
-            <div data-ans-id="{{ $answer->id }}">
-                <button id="edit_ans">답글 수정</button>
-                <button id="del_ans">답글 삭제</button>
-            </div>
-
-            <br>
-        @else
             @if(Auth::user())
                 @if(Auth::user()->admin)
-                    
+                    <div data-ans-id="{{ $answer->id }}">
+                        <button id="edit_ans">답글 수정</button>
+                        <button id="del_ans">답글 삭제</button>
+                    </div>
+
                     <br>
-                    
+                @endif
+            @endif
+        @else
+
+            <div>답변이 없습니다.</div>
+
+            <br>
+            @if(Auth::user())
+                @if(Auth::user()->admin)      
                     <div id="answer_bar" data-add-id="{{ $question->id }}">
                         <button id="add_answer">답변 달기</button>
                     </div>

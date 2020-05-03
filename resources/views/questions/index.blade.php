@@ -31,9 +31,11 @@
 
     <br>
 
-    <div>
-        <button id="add_ques">글 등록</button>
-    </div>
+    @if(Auth::user())
+        <div>
+            <button id="add_ques">글 등록</button>
+        </div>
+    @endif
 
     <br>
 
