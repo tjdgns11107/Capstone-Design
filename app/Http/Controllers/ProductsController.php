@@ -59,7 +59,7 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        $product = \App\Product::where('id','=',$id)->get()[0];
+        $product = \App\Product::where('id','=',$id)->first();
 
         return view('products.show', compact('product'));
     }
@@ -72,7 +72,7 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $product = \App\Product::where('id','=',$id)->get()[0];
+        $product = \App\Product::where('id','=',$id)->first();
 
         return view('products.edit', compact('product'));
     }

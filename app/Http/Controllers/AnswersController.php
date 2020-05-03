@@ -22,9 +22,11 @@ class AnswersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $question = \App\Question::where('id', '=', $request->id)->get()[0];
+
+        return view('answers.create', compact('question'));
     }
 
     /**
@@ -51,9 +53,7 @@ class AnswersController extends Controller
      */
     public function show($id)
     {
-        $answer = \App\Answer::where('target_id','=',$id)->get()[0];
-
-        return compact('answer');
+        //
     }
 
     /**
@@ -64,7 +64,10 @@ class AnswersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $answer = \App\Answer::where('id', '=', $id)->first();
+        $question = \App\Question::where('id','=',$answer->target_id)->first();
+        
+        return view('answers.edit', compact('question', 'answer'));
     }
 
     /**
@@ -76,7 +79,14 @@ class AnswersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        \App\Answer::where('id', '=', $id)->update([
+            'answer_content' => $request->content,
+        ]);
+
+        $answer = \App\Answer::where('id', '=', $id)->first();
+        $question = \App\Question::where('id','=',$answer->target_id)->first();
+        
+        return view('questions.show', compact('question', 'answer'));
     }
 
     /**
@@ -87,6 +97,9 @@ class AnswersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        \App\Answer::where('target_id','=',$id)->delete();
+        $question = \App\Question::where('id','=',$id)->first();
+
+        return view('questions.show', compact('question'));
     }
 }

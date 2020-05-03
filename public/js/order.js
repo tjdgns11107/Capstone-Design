@@ -53,12 +53,10 @@ $(document).ready(function(){
                 send_address:$('#send_address').val(),
                 payment:0,
             },
-            success: function() {
+            success: function(data) {
+                console.log(data);
                 alert('주문이 완료되었습니다.');
-                location.href = '/products';
-            },
-            error:function(request,status,error){
-                console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                location.href = '/orders/' + data;
             }
         });
     });
@@ -113,7 +111,6 @@ $(document).ready(function(){
     $('#save_order').on('click', function(e) {
         e.preventDefault();
         var uid = $(this).closest('form#edit_form').attr('data-ord-id');
-        var usid = $(this).closest('#user_num').attr('data-use-id');
 
         if(confirm('주문을 수정 하시겠습니까?')) {
             $.ajax({
@@ -122,10 +119,10 @@ $(document).ready(function(){
                 data: {
                     user: $('#send_user').val(),
                     address: $('#send_address').val(),
-                    user_id: usid,
+                    user_id: $(this).closest('#user_num').attr('data-use-id'),
                 },
                 success: function() {
-                    location.href = '/orders?id=' + usid;
+                    location.href = '/orders/' + uid;
                 }
             });
         }

@@ -70,7 +70,7 @@ Route::resource('products', 'ProductsController');
 Route::resource('orders', 'OrdersController');
 
 
-// 질문 페이지
+// qna 페이지
 
 Route::resource('qna', 'QuestionsController');
 

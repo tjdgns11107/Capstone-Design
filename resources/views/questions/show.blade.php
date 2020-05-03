@@ -20,29 +20,6 @@
             <div>작성일 : {{ $question->created_at }}</div>
             <div>수정일 : {{ $question->updated_at }}</div>
         </div>
-        
-        <br>
-
-        <div>
-            <button id="back_qna">목록으로</button>
-        </div>
-
-        <br>
-
-        @if(Auth::user())
-            @if(Auth::user()->admin)
-                <div id="answer_bar" data-ans-id="{{ $question->id }}">
-                    <!-- <button id="add_answer">답변 달기</button> -->
-                    <form id="postAnswer" data-ad-ques-id="{{ $question->id }}">
-                        <div>
-                            <label for="answer_content">답변</label>
-                            <input type="text" id="answer_content" class="form-control">
-                        </div>
-                        <button type="submit" id="save_answer">답변 등록</button>
-                    </form>
-                </div>
-            @endif
-        @endif
 
         <br>
 
@@ -55,10 +32,39 @@
             @endif
         @endif
 
-    </div>
+        @if(isset($answer))
+            <br>
 
-    <br>
-    <div>admin일 때 답글 달 창(임시)</div>
+            <div>{{ $answer->answer_content }}</div>
+
+            <br>
+
+            <div data-ans-id="{{ $answer->id }}">
+                <button id="edit_ans">답글 수정</button>
+                <button id="del_ans">답글 삭제</button>
+            </div>
+
+            <br>
+        @else
+            @if(Auth::user())
+                @if(Auth::user()->admin)
+                    
+                    <br>
+                    
+                    <div id="answer_bar" data-add-id="{{ $question->id }}">
+                        <button id="add_answer">답변 달기</button>
+                    </div>
+            
+                    <br>
+                @endif
+            @endif
+        @endif
+
+        <div>
+            <button id="back_qna">목록으로</button>
+        </div>
+
+    </div>
 
 
 @include('partials.footer')
@@ -67,4 +73,5 @@
 
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="/js/question.js"></script>
+<script src="/js/answer.js"></script>
 <link rel="stylesheet" href="/css/qna.css">

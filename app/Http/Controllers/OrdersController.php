@@ -30,7 +30,7 @@ class OrdersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request) {
-        $product = \App\Product::where('id', '=', $request->id)->get()[0];
+        $product = \App\Product::where('id', '=', $request->id)->first();
 
         return view('orders.create', compact('product'));
     }
@@ -51,7 +51,8 @@ class OrdersController extends Controller
             'payment' => $request->payment,
         ]);
 
-        return $order;
+        return $order->id;
+        // return view('orders.show', compact('order'));
     }
 
     /**
@@ -62,7 +63,7 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-        $order = \App\Order::where('id', '=', $id)->get()[0];
+        $order = \App\Order::where('id', '=', $id)->first();
 
         // return $order;
         return view('orders.show', compact('order'));
@@ -76,7 +77,7 @@ class OrdersController extends Controller
      */
     public function edit($id)
     {
-        $order = \App\Order::where('id','=',$id)->get()[0];
+        $order = \App\Order::where('id','=',$id)->first();
 
         return view('orders.edit', compact('order'));
     }

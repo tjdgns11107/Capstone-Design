@@ -21,7 +21,7 @@ class QuestionsController extends Controller
     {
         $questions = \App\Question::get();
 
-        return view('qna.index', compact('questions'));
+        return view('questions.index', compact('questions'));
     }
 
     /**
@@ -31,7 +31,7 @@ class QuestionsController extends Controller
      */
     public function create()
     {
-        return view('qna.create');
+        return view('questions.create');
     }
 
     /**
@@ -59,9 +59,15 @@ class QuestionsController extends Controller
      */
     public function show($id)
     {
-        $question = \App\Question::where('id','=',$id)->get()[0];
+        $question = \App\Question::where('id','=',$id)->first();
+        $answer = \App\Answer::where('target_id', '=', $id)->first();
 
-        return view('qna.show', compact('question'));
+        if(isset($answer)) { // $answer이 있는 경우
+            return view('questions.show', compact('question', 'answer'));
+        }
+
+        // 없는 경우
+        return view('questions.show', compact('question'));
     }
 
     /**
@@ -72,9 +78,9 @@ class QuestionsController extends Controller
      */
     public function edit($id)
     {
-        $question = \App\Question::where('id','=',$id)->get()[0];
+        $question = \App\Question::where('id','=',$id)->first();
 
-        return view('qna.edit', compact('question'));
+        return view('questions.edit', compact('question'));
     }
 
     /**
