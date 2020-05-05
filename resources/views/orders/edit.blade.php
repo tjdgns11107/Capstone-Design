@@ -34,8 +34,7 @@
        
         <div>
             <label for="buy_user">주문자</label>
-            <div id="buy_user">{{ Auth::user()->user_id }}</div>
-            <!-- "message": "Trying to get property 'user_id' of non-object 해결 필요.. -->
+            <div id="buy_user">{{ $order->user->user_id }}</div>
         </div>
         
         <br>

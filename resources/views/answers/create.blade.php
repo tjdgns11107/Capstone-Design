@@ -5,7 +5,7 @@
 <form id="post_answer" class="form__auth">
         {!! csrf_field() !!}
 
-        <div id="user_id" >{{Auth::user()->id}}</div>
+        <div id="user_id">{{Auth::user()->id}}</div>
 
         <div>
             <label for="question_title">질문 제목</label>
@@ -27,7 +27,7 @@
             {!! $errors->first('answer_content', '<span class="form-error">:message</span>') !!}
         </div>
 
-        <div class='form-group' data-add-id="{{$answer->id}}">
+        <div class='form-group' data-add-id="{{$question->id}}">
             <button type="submit" id="save_answer">답변 등록</button>
         </div>
 

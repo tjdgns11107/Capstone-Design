@@ -5,7 +5,7 @@
 <form id="post_question" class="form__auth">
         {!! csrf_field() !!}
 
-        <div id="user_id" >{{Auth::user()->id}}</div>
+        <div id="user_id">{{Auth::user()->id}}</div>
         
         <div class="form-group {{ $errors->has('question_title') ? 'has-error' : '' }}">
             <label for="question_title">제목</label>

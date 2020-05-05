@@ -35,8 +35,8 @@ $(document).ready(function(){
     });
 
     // 질문 보기
-    $('.qna_question').on('click', function() {
-        var sid = $(this).parent('div').attr('data-ques-id');
+    $('.qna_tr').on('click', function() {
+        var sid = $(this).attr('data-ques-id');
         
         console.log(sid);
 

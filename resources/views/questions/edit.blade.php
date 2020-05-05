@@ -7,10 +7,6 @@
     <form id="edit_question" class="form__auth" data-up-id="{{$question->id}}">
         {!! csrf_field() !!}
         {!! method_field('PATCH') !!}
-    
-        <div class="form-group {{ $errors->has('id') ? 'has-error' : '' }}">
-            
-        </div>
         
         <div class="form-group {{ $errors->has('question_title') ? 'has-error' : '' }}">
             <label for="question_title">제품 명</label>

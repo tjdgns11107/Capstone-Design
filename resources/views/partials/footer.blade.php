@@ -1,7 +1,8 @@
-<hr>
 
 <footer>
 
-<p>footer</p>
+    <br>
+    
+    <div></div>
 
 </footer>

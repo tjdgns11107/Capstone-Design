@@ -21,7 +21,10 @@ class QuestionsController extends Controller
     {
         $questions = \App\Question::get();
 
-        return view('questions.index', compact('questions'));
+        return view('questions.index', [
+            'questions' => $questions,
+            'menu' => 'QnA',
+        ]);
     }
 
     /**

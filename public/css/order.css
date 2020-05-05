@@ -1,7 +1,69 @@
-#product_id {
-    display: none;
+#order_index {
+    text-align: left;
+    margin: 50px 200px;
+    font-size: 20px;
 }
 
-#buy_user {
-    display: none;
+.order_div {
+    border: 1px solid gray;
+    margin: 5px 100px;
+    padding: 10px;
+}
+
+table, th, td {
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px 20px;
+}
+
+#product_th {
+    width: 100px;
+}
+
+#send_user_th {
+    width: 100px;
+}
+
+#send_address_th {
+    width: 370px;
+}
+
+#order_date_th {
+    width: 120px;
+}
+
+#order_th {
+    width: 100px;
+}
+
+.order_tr {
+    height: 100px;
+}
+
+.btn {
+    background-color: #cccccc;
+    border: 0;
+    display: grid;
+    width: 100%;
+    height: 47%;
+    margin: 3px 0;
+}
+
+.order_bar {
+    height: 80px;
+}
+
+.text_1 {
+    text-align: center;
+}
+
+#order_title {
+    font-size: 20px;
+}
+
+#order_content {
+    font-size: 12px;
 }

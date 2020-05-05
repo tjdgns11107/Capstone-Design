@@ -11,7 +11,9 @@ class InformationsController extends Controller
     }
 
     public function index() {
-        return view('informations.changeInfo');
+        return view('informations.changeInfo', [
+            'menu' => '회원 정보 수정',
+        ]);
     }
 
     public function update(Request $request) {

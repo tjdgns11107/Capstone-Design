@@ -1,43 +1,32 @@
-#qna_table {
-    width:950px;
-    
-    border: 1px solid black;
+table, th, td {
+    border: 1px solid gray;
+    border-collapse: collapse;
 }
 
-.qna_bar, .qna_question {
-    display: inline-block;
-    padding: 10px;
+th, td {
+    padding: 10px 20px;
 }
 
-#qb_id, #ques_id {
-    width: 50px;
-    text-align: center;
-}
-
-#qb_title, #ques_title {
-    width: 500px;
-    text-align: center;
-}
-
-#qb_user, #ques_user {
+#qna_id_th {
     width: 100px;
-    text-align: center;
 }
 
-#qb_created, #ques_created {
+#qna_title_th {
+    width: 400px;
+}
+
+#qna_user_th {
     width: 150px;
+}
+
+#qna_create_th {
+    width: 150px;
+}
+
+.qna_tr {
+    height: 60;
+}
+
+.text_1 {
     text-align: center;
 }
-
-#ques_empty {
-    padding: 10px;
-    text-align: center;
-}
-
-#user_id {
-    display: none;
-}
-
-/* #postAnswer {
-    display: none;
-} */

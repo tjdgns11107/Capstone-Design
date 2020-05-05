@@ -9,8 +9,8 @@
     <form id="order_post" class="form__auth">
         {!! csrf_field() !!}
 
-        <div id="product_id">{{$product->id}}</div>
-        <div id="buy_user">{{Auth::user()->id}}</div>
+        <input type="hidden" id="product_id" value="{{$product->id}}" />
+        <input type="hidden" id="buy_user" value="{{Auth::user()->id}}" />
 
         <div class="form-group ">
             <label for="product_title">제품명</label>
@@ -28,13 +28,13 @@
 
         <div class="form-group {{ $errors->has('order_') ? 'has-error' : '' }}">
             <label for="send_user">받는 사람</label>
-            <input type="text" name="send_user" id="send_user" class="form-control" autofocus />
+            <input type="text" name="send_user" id="send_user" class="form-control" value="{{ old('send_user') }}" autofocus />
             {!! $errors->first('send_user', '<span class="form-error">:message</span>') !!}
         </div>
 
         <div class="form-group {{ $errors->has('send_address') ? 'has-error' : '' }}">
             <label for="send_address">주소</label>
-            <input type="text" name="send_address" id="send_address" class="form-control" />
+            <input type="text" name="send_address" id="send_address" class="form-control" value="{{ old('send_address') }}"/>
             {!! $errors->first('send_address', '<span class="form-error">:message</span>') !!}
         </div>
 

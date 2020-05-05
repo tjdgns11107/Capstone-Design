@@ -3,18 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\AnswersRequest;
 
-class AnswersController extends Controller
+class ChallengesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $challenges = \App\Challenge::get();
+
+        return view('challenges.index', [
+            'challenges'=>$challenges,
+            'menuName'=>'챌린지'
+        ]);
     }
 
     /**
@@ -22,11 +31,9 @@ class AnswersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $question = \App\Question::where('id', '=', $request->id)->first();
-
-        return view('answers.create', compact('question'));
+        //
     }
 
     /**
@@ -35,14 +42,9 @@ class AnswersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AnswersRequest $request)
+    public function store(Request $request)
     {
-        $answer = \App\Answer::create([
-            'target_id' => $request->id,
-            'answer_content' => $request->content,
-        ]);
-
-        return $answer;
+        //
     }
 
     /**
@@ -64,9 +66,7 @@ class AnswersController extends Controller
      */
     public function edit($id)
     {
-        $answer = \App\Answer::where('id', '=', $id)->first();
-        
-        return view('answers.edit', compact('answer'));
+        //
     }
 
     /**
@@ -78,14 +78,7 @@ class AnswersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        \App\Answer::where('id', '=', $id)->update([
-            'answer_content' => $request->content,
-        ]);
-
-        $answer = \App\Answer::where('id', '=', $id)->first();
-        $question = \App\Question::where('id','=',$answer->target_id)->first();
-        
-        return view('questions.show', compact('question', 'answer'));
+        //
     }
 
     /**
@@ -96,9 +89,6 @@ class AnswersController extends Controller
      */
     public function destroy($id)
     {
-        \App\Answer::where('target_id','=',$id)->delete();
-        $question = \App\Question::where('id','=',$id)->first();
-
-        return view('questions.show', compact('question'));
+        //
     }
 }

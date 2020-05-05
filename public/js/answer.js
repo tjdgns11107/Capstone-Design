@@ -8,6 +8,7 @@ $(document).ready(function(){
     // 질문 등록 창
     $('#add_answer').on('click', function() {
         var sid = $(this).parent('div').attr('data-add-id');
+        console.log(sid);
 
         $.ajax({
             url: "/qna/answer/create",
@@ -15,9 +16,8 @@ $(document).ready(function(){
             data: {
                 id: sid,
             },
-            success: function (data) {
+            success: function () {
                 location.href = '/qna/answer/create?id=' + sid;
-                // console.log(data);
             }
         });
     });
@@ -45,13 +45,15 @@ $(document).ready(function(){
     // 답변 수정 페이지로 이동
     $('#edit_ans').on('click', function() {
         var eid = $(this).parent('div').attr('data-ans-id');
-        console.log(eid);
 
         $.ajax({
             url: '/qna/answer/' + eid + "/edit",
             type: 'GET',
             success: function() {
                 location.href = '/qna/answer/' + eid + '/edit';
+            },
+            error:function(request,status,error){
+                console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
             }
         });
     });
@@ -71,9 +73,6 @@ $(document).ready(function(){
                 },
                 success: function() {
                     location.href = '/qna/' + qid;
-                },
-                error:function(request,status,error){
-                    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                 }
             });
         }

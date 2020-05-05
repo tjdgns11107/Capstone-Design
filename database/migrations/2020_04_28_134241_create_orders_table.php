@@ -24,10 +24,10 @@ class CreateOrdersTable extends Migration
             $table->timestamps();
 
             $table->foreign('buy_user')->references('id')->
-                on('users')->onDelete('cascade');
+                on('users')->onUpdate('cascade')->onDelete('cascade');
 
             $table->foreign('product_id')->references('id')->
-                on('products')->onDelete('cascade');
+                on('products')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

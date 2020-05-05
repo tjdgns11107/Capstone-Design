@@ -1,0 +1,50 @@
+#info_form {
+    width: 600px;
+    height: 550px;
+    border: 1px solid green;
+    border-radius: 10px;
+    margin: 50px auto;
+    padding: 50px 0;
+}
+
+label {
+    font-size: 20px;
+}
+
+.form-group {
+    font-size: 15px;
+    padding: 15px;
+}
+
+.form-control {
+    padding: 10px 20px;
+    width: 300px;
+    height: 40px;
+    text-align: center;
+}
+
+.info {
+    text-align: center;
+    width: 258px;
+    height: 18px;
+    padding: 10px 20px;
+    margin: auto;
+    border: 1px solid green;
+}
+
+input {
+    border: 1px solid greenyellow;
+}
+
+.btn {
+    width: 300px;
+    height: 50px;
+    font-size: 18px;
+    background-color: greenyellow;
+    border: none;
+}
+
+.sub {
+    font-size: 8px;
+    display: inline;
+}

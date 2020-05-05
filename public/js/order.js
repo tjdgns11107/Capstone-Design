@@ -31,9 +31,6 @@ $(document).ready(function(){
             },
             success: function() {
                 location.href = '/orders/create?id=' + oid;
-            },
-            error:function(request,status,error){
-                console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
             }
         });
     });
@@ -46,8 +43,8 @@ $(document).ready(function(){
             url: "/orders",
             type: 'POST',
             data: {
-                product_id: $('#product_id').html(),
-                buy_user: $('#buy_user').html(),
+                product_id: $('#product_id').val(),
+                buy_user: $('#buy_user').val(),
                 order_date: getRecentDate(),
                 send_user:$('#send_user').val(),
                 send_address:$('#send_address').val(),
@@ -131,7 +128,7 @@ $(document).ready(function(){
     // 주문 삭제
     $('.delete_order').on('click', function() {
         var did = $(this).closest('.order_bar').attr('data-ord-id');
-        var uid = $(this).closest('.order_div').attr('data-use-id');
+        var uid = $(this).closest('.order_tr').attr('data-use-id');
 
         console.log(did, uid);
         

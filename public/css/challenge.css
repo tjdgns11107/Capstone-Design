@@ -1,0 +1,55 @@
+.challenge-box{
+    position: relative;
+    margin: 30px auto;
+    top: 30px;
+    width: 900px;
+    height:300px;
+    border: 1px solid black;
+}
+
+#order_index {
+    text-align: left;
+    margin: 50px 200px;
+    font-size: 20px;
+}
+
+table, th, td {
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px 20px;
+}
+
+#join_th {
+    width: 70px;
+}
+
+#join_name_th {
+    width: 300px;
+}
+
+#join_date_th {
+    width: 150px;
+}
+
+#join_term_th {
+    width: 100px;
+}
+
+#join_fee_th {
+    width: 120px;
+}
+
+.join_tr {
+    height: 70px;
+}
+
+.text_1 {
+    text-align: center;
+}
+
+.text_2 {
+    text-align: right;
+}

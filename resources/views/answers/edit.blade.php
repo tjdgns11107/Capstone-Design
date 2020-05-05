@@ -2,21 +2,21 @@
 
 @section('content')
 
-<form id="edit_answer" class="form__auth" data-que-id="{{$question->id}}">
+<form id="edit_answer" class="form__auth" data-que-id="{{$answer->question->id}}">
         {!! csrf_field() !!}
 
-        <div id="user_id" >{{Auth::user()->id}}</div>
+        <input id="user_id" value="{{$answer->question->user_id}}">
 
         <div>
             <label for="question_title">질문 제목</label>
-            <div id="question_title">{{$question->question_title}}</div>
+            <div id="question_title">{{$answer->question->question_title}}</div>
         </div>
 
         <br>
         
         <div>
             <label for="question_content">질문 내용</label>
-            <div id="question_content">{{$question->question_content}}</div>
+            <div id="question_content">{{$answer->question->question_content}}</div>
         </div>
 
         <hr>

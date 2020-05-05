@@ -31,6 +31,9 @@ class DatabaseSeeder extends Seeder
 
         App\Order::truncate();
         $this->call(OrdersTableSeeder::class);
+        
+        App\Challenge::truncate();
+        $this->call(ChallengesTableSeeder::class);
 
         if(config('database.default') !== 'sqlite') {
             DB::statement('SET FOREIGN_KEY_CHECKS=1');

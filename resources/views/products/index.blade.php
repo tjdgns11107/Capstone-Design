@@ -2,10 +2,6 @@
 
 @section('content')
 
-
-    <div>주문 페이지입니다.</div>
-    <br>
-
     @forelse($products as $product)
         <div class="productDiv" data-pro-id="{{ $product->id }}">
             <meta name="csrf-token" content="{{ csrf_token() }}">

@@ -21,7 +21,10 @@ class OrdersController extends Controller
     {
         $orders = \App\Order::where('buy_user', '=', $request->id)->get();
 
-        return view('orders.index', compact('orders'));
+        return view('orders.index', [
+            'orders' => $orders,
+            'menu' => '주문 내역',
+        ]);
     }
 
     /**

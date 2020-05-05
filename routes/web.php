@@ -75,3 +75,10 @@ Route::resource('orders', 'OrdersController');
 Route::resource('qna', 'QuestionsController');
 
 Route::resource('qna/answer', 'AnswersController');
+
+
+// 챌린지 페이지
+
+Route::resource('challenges', 'ChallengesController');
+
+Route::resource('join_challenges', 'JoinChallengesController');

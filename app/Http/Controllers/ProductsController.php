@@ -21,7 +21,10 @@ class ProductsController extends Controller
     {
         $products = \App\Product::get();
 
-        return view('products.index', compact('products'));
+        return view('products.index', [
+            'products' => $products,
+            'menu' => '제품 구매'
+        ]);
     }
 
     /**

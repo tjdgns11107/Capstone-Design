@@ -2,32 +2,26 @@
 
 @section('content')
 
-    <div>질문 페이지</div>
-
-    <br>
-
-    <div id="qna_table" align="center">
-        <div id="qna_header">
-            <div class="qna_bar" id="qb_id">번호</div>
-            <div class="qna_bar" id="qb_title">제목</div>
-            <div class="qna_bar" id="qb_user">작성자</div>
-            <!-- <div class="qna_bar"  id="qb_ans">답글 개수</div> -->
-            <div class="qna_bar"  id="qb_created">등록일</div>
-        </div>
+    <table align="center">
+        <th class="qna_th" id="qna_id_th">번호</th>
+        <th class="qna_th" id="qna_title_th">제목</th>
+        <th class="qna_th" id="qna_user_th">작성자</th>
+        <th class="qna_th"  id="qna_create_th">등록일</th>
 
         @forelse($questions as $question)
-            <div class="qna_body" data-ques-id="{{$question->id}}">
-                <div class="qna_question" id="ques_id">{{ $question->id }}</div>
-                <div class="qna_question" id="ques_title">{{ $question->question_title }}</div>
-                <div class="qna_question" id="ques_user">{{ $question->user->user_id }}</div>
-                <!-- <div class="qna_question">{{ $question->title }}</div> -->
-                <div class="qna_question" id="ques_created">{{ $question->created_at }}</div>
-            </div>
+            <tr class="qna_tr" data-ques-id="{{$question->id}}">
+                <td class="text_1">{{ $question->id }}</td>
+                <td class="text_1">{{ $question->question_title }}</td>
+                <td class="text_1">{{ $question->user->user_id }}</td>
+                <td class="text_1">{{ $question->created_at }}</td>
+            </td>
         @empty
-            <div id="ques_empty">질문이 등록되어있지 않습니다.</div>
+            <tr>
+                <td colspan="4" id="qna_tr">질문이 등록되어있지 않습니다.</td>
+            </tr>
         @endforelse
 
-    </div>
+    </table>
 
     <br>
 
@@ -36,8 +30,6 @@
             <button id="add_ques">글 등록</button>
         </div>
     @endif
-
-    <br>
 
 @include('partials.footer')
 
