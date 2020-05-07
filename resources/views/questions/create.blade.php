@@ -2,24 +2,24 @@
 
 @section('content')
 
-<form id="post_question" class="form__auth">
+    <form id="post_question" class="form__auth">
         {!! csrf_field() !!}
 
-        <div id="user_id">{{Auth::user()->id}}</div>
+        <input type='hidden' id="user_id" value="{{Auth::user()->id}}">
         
-        <div class="form-group {{ $errors->has('question_title') ? 'has-error' : '' }}">
-            <label for="question_title">제목</label>
+        <div class="create_ques {{ $errors->has('question_title') ? 'has-error' : '' }}">
+            <div class="tag"><label for="question_title">제목</label></div>
             <input type="text" name="question_title" id="question_title" class="form-control" autofocus />
             {!! $errors->first('question_title', '<span class="form-error">:message</span>') !!}
         </div>
 
-        <div class="form-group {{ $errors->has('question_content') ? 'has-error' : '' }}">
-            <label for="question_content">질문 내용</label>
-            <input type="text" name="question_content" id="question_content" class="form-control" />
+        <div class="create_ques {{ $errors->has('question_content') ? 'has-error' : '' }}">
+            <div class="tag"><label for="question_content" class="tag">질문 내용</label></div>
+            <textarea name="question_content" id="question_content" wrap=hard  cols="75" rows="12"></textarea>
             {!! $errors->first('question_content', '<span class="form-error">:message</span>') !!}
         </div>
 
-        <div class='form-group'>
+        <div class="create_ques">
             <button type="submit" id="save_question">질문 등록</button>
         </div>
 

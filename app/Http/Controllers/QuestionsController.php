@@ -34,7 +34,9 @@ class QuestionsController extends Controller
      */
     public function create()
     {
-        return view('questions.create');
+        return view('questions.create', [
+            'menu' => '질문 등록',
+        ]);
     }
 
     /**
@@ -83,7 +85,10 @@ class QuestionsController extends Controller
     {
         $question = \App\Question::where('id','=',$id)->first();
 
-        return view('questions.edit', compact('question'));
+        return view('questions.edit', [
+            'question' => $question,
+            'menu' => '질문 수정',
+        ]);
     }
 
     /**

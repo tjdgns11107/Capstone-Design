@@ -76,7 +76,9 @@ class JoinChallengesController extends Controller
      */
     public function show($id)
     {
-        //
+        $join = \App\JoinChallenge::where('id', '=', $id)->first();
+
+        return view('joinChallenges.show' ,compact('join'));
     }
 
     /**

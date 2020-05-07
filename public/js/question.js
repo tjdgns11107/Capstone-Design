@@ -20,13 +20,16 @@ $(document).ready(function(){
     $('#save_question').on('click', function(e) {
         e.preventDefault();
 
+        var str = $('#question_content').val();
+        str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+
         $.ajax({
             url: "/qna",
             type: 'POST',
             data: {
-                user_id: $('#user_id').html(),
+                user_id: $('#user_id').val(),
                 title: $('#question_title').val(),
-                content: $('#question_content').val(),
+                content: str,
             },
             success: function() {
                 location.href = '/qna';
@@ -36,9 +39,7 @@ $(document).ready(function(){
 
     // 질문 보기
     $('.qna_tr').on('click', function() {
-        var sid = $(this).attr('data-ques-id');
-        
-        console.log(sid);
+        var sid = $(this).attr('data-que-id');
 
         $.ajax({
             url: '/qna/' + sid,
@@ -73,7 +74,10 @@ $(document).ready(function(){
     // 질문 업데이트
     $('#update_ques').on('click', function(e) {
         e.preventDefault();
-        var upid = $('#update_ques').closest('#edit_question').attr('data-up-id');
+        var upid = $('#update_ques').closest('form').attr('data-up-id');
+
+        var str = $('#question_content').val();
+        str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
 
         if(confirm('정보를 수정 하시겠습니까?')) {
             $.ajax({
@@ -81,7 +85,7 @@ $(document).ready(function(){
                 type: 'patch',
                 data: {
                     title: $('#question_title').val(),
-                    content: $('#question_content').val(),
+                    content: str,
                 },
                 success: function() {
                     location.href = '/qna/' + upid;

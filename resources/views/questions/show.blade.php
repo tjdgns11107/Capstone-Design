@@ -4,74 +4,54 @@
 
     <div id="show_ques">
         
-        <div class="form-group {{ $errors->has('question_title') ? 'has-error' : '' }}">
-            <label for="question_title">제목</label>
-            <div id="question_title" class="form-control">{{ $question->question_title }}</div>
-        </div>
-        <br>
-
-        <div class="form-group {{ $errors->has('question_content') ? 'has-error' : '' }}">
-            <label for="question_content">질문 내용</label>
-            <div id="question_content" class="form-control">{{ $question->question_content }}</div>
-        </div>
-        <br>
-
-        <div>
-            <div>작성일 : {{ $question->created_at }}</div>
-            <div>수정일 : {{ $question->updated_at }}</div>
+        <div class="show_question">
+            <div class="tag">제목</div>
+            <div id="title" class="form-control">{{ $question->question_title }}</div>
         </div>
 
-        <br>
+        <div class="show_question">
+            <div class="tag">질문 내용</div>
+            <pre id="content" class="form-control">{{ $question->question_content }}</pre>
+        </div>
 
-        @if(Auth::user())
-            @if(Auth::user()->id == $question->user_id)
-                <div data-ques-id="{{ $question->id }}">
-                    <button id="ques_alt">글 수정</button>
-                    <button id="ques_del">글 삭제</button>
-                </div>
-                
-                <br>
-            @endif
-        @endif
+        <div id="date_bar" class="show_question">
+            <div class="date">작성일 : {{ $question->created_at }}</div>
+            <div class="date">수정일 : {{ $question->updated_at }}</div>
+        </div>
 
         @if(isset($answer))
-
-            <div>{{ $answer->answer_content }}</div>
-
-            <br>
-
+            <pre class="ans_content" class="form-control">{{ $answer->answer_content }}</pre>
             @if(Auth::user())
+                <div  class="show_question" data-ques-id="{{ $question->id }}" data-ans-id="{{ $answer->id }}">
+                @if(Auth::user()->id == $question->user_id)
+                        <button id="ques_alt">글 수정</button>
+                        <button id="ques_del">글 삭제</button>
+                @endif
                 @if(Auth::user()->admin)
-                    <div data-ans-id="{{ $answer->id }}">
                         <button id="edit_ans">답글 수정</button>
                         <button id="del_ans">답글 삭제</button>
-                    </div>
-
-                    <br>
                 @endif
             @endif
         @else
-
-            <div>답변이 없습니다.</div>
-
-            <br>
+            <div class="ans_content">답변이 없습니다.</div>
             @if(Auth::user())
+                <div class="show_question" data-ques-id="{{ $question->id }}">@if(Auth::user()->id == $question->user_id)
+                    <button id="ques_alt">글 수정</button>
+                    <button id="ques_del">글 삭제</button>
+            @endif
                 @if(Auth::user()->admin)      
-                    <div id="answer_bar" data-add-id="{{ $question->id }}">
-                        <button id="add_answer">답변 달기</button>
-                    </div>
-            
-                    <br>
+                    <button id="add_answer">답변 달기</button>
+                @else
+                    <div class="show_question">
                 @endif
+            @else
+                <div class="show_question">
             @endif
         @endif
-
-        <div>
             <button id="back_qna">목록으로</button>
         </div>
 
     </div>
-
 
 @include('partials.footer')
 
@@ -80,4 +60,17 @@
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="/js/question.js"></script>
 <script src="/js/answer.js"></script>
+<script>
+    $(document).ready(function() {    
+        var str = $('#content').html();
+        str = str.split('&lt;br/&gt;').join("\n");
+        $('#content').html(str);
+        
+        if($('.ans_content')) {
+            var str = $('.ans_content').html();
+            str = str.split('&lt;br/&gt;').join("\n");
+            $('.ans_content').html(str);
+        }
+    });
+</script>
 <link rel="stylesheet" href="/css/qna.css">

@@ -10,7 +10,7 @@
         <th id="join_term_th">참여 기간</th>
         <th id="join_fee_th">참여 비용</th>
         @forelse($joins as $join)
-        <tr class="join_tr">
+        <tr class="join_tr" data-cs-id="{{ $join->id }}">
             <td class="text_1">{{ $join->id }}</td>
             <td class="text_1">{{ $join->challenge->challenge_name }}</div>
             <td class="text_1">{{ $join->join_date }}</div>

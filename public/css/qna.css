@@ -1,3 +1,5 @@
+/* 질문 페이지 - 테이블 */
+
 table, th, td {
     border: 1px solid gray;
     border-collapse: collapse;
@@ -5,6 +7,10 @@ table, th, td {
 
 th, td {
     padding: 10px 20px;
+}
+
+.qna_index {
+    margin: 50px auto;
 }
 
 #qna_id_th {
@@ -16,7 +22,7 @@ th, td {
 }
 
 #qna_user_th {
-    width: 150px;
+    width: 100px;
 }
 
 #qna_create_th {
@@ -27,6 +33,125 @@ th, td {
     height: 60;
 }
 
-.text_1 {
+.text_1, #empty_qna{
     text-align: center;
+}
+
+#add_ques {
+    width: 300px;
+    height: 70px;
+    font-size: 25px;
+    background-color: lightgreen;
+    border: 0;
+    margin: 30px;
+}
+
+/* 질문 생성, 수정 페이지 */
+.create_ques, .edit_ques {
+    margin: 50px auto;
+}
+
+#question_title, #question_content {
+    margin: 30px;
+}
+
+#question_title {
+    width: 700px;
+    height: 40px;
+    font-size: 20px;
+}
+
+#question_content, #answer_content {
+    font-size: 20px;
+    resize: none;
+}
+
+.tag {
+    margin: 30px;
+    font-size: 20px;
+}
+
+#save_question, #update_ques {
+    width: 700px;
+    height: 60px;
+    background-color: lightgreen;
+    font-size: 20px;
+    border: 0;
+    margin: 30px;
+}
+
+/* 질문 내용 페이지 */
+#show_ques {
+    margin: 100px;
+}
+
+#title, #content, .ans_content, #empty_ans,
+#question_title, #question_content,
+#ans_ques_title, #ans_ques_content {
+    text-align: left;
+    width: 800px;
+    padding: 30px;
+    font-size: 20px;
+    margin: 0 auto;
+    border: 1px solid lightgreen;
+    border-radius: 10px;
+}
+
+#title, #empty_ans {
+    height: 30px;
+}
+
+.ans_content {
+    margin: 30px auto;
+}
+
+.date {
+    text-align: right;
+}
+
+#date_bar {
+    width: 800px;
+    margin: auto;
+}
+
+#ques_alt, #ques_del, #edit_ans, #del_ans,
+#add_answer, #back_qna, #save_answer, #update_answer {
+    width: 160px;
+    height: 40px;
+    margin: 50px auto;
+    font-size: 20px;
+    background-color: lightgreen;
+    border: 0;
+}
+
+.show_question {
+    margin: 30px;
+}
+
+
+/* 답변 등록, 수정 */
+
+#question_title, #question_content, #answer_content,
+#ans_ques_title, #ans_ques_content {
+    width: 800px;
+    margin: 30px;
+    padding: 30px;
+    font-size: 20px;
+    margin: 0 auto;
+    border: 1px solid lightgreen;
+    border-radius: 10px;
+}
+
+.create_ans {
+    margin: 30px;
+}
+
+#user_id {
+    display: inline;
+}
+
+#user_bar {
+    text-align: right;
+    width: 800px;
+    margin: auto;
 }

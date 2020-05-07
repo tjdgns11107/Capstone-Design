@@ -1,7 +1,8 @@
 $(document).ready(function(){
     $.ajaxSetup({
         headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            'Content-type': 'text/html;charset=ISO-8859-1',
         }
     });
 
@@ -28,8 +29,12 @@ $(document).ready(function(){
                 price: $('#product_price').val(),
                 content: $('#product_content').val(),
             },
-            success: function() {
-                location.href = '/products';
+            success: function(data) {
+                // location.href = '/products';
+                console.log(data);
+            },
+            error:function(request,status,error){
+                console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
             }
         });
     });

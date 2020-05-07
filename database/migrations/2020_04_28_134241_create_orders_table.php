@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('product_id');
             $table->string('order_date');
             $table->string('send_user');
-            $table->string('send_address');
+            $table->text('send_address');
             $table->string('payment')->default(0);
             $table->timestamps();
 

@@ -7,7 +7,7 @@ $(document).ready(function(){
 
     // 질문 등록 창
     $('#add_answer').on('click', function() {
-        var sid = $(this).parent('div').attr('data-add-id');
+        var sid = $(this).parent('div').attr('data-ques-id');
         console.log(sid);
 
         $.ajax({
@@ -27,14 +27,16 @@ $(document).ready(function(){
         e.preventDefault();
 
         var aid = $(this).parent('div').attr('data-add-id');
-        console.log(aid)
+        
+        var str = $('#answer_content').val();
+        str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
 
         $.ajax({
             url: "/qna/answer",
             type: 'POST',
             data: {
                 id: aid,
-                content: $('#answer_content').val(),
+                content: str,
             },
             success: function() {
                 location.href = '/qna/' + aid;
@@ -51,9 +53,6 @@ $(document).ready(function(){
             type: 'GET',
             success: function() {
                 location.href = '/qna/answer/' + eid + '/edit';
-            },
-            error:function(request,status,error){
-                console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
             }
         });
     });
@@ -62,14 +61,17 @@ $(document).ready(function(){
     $('#update_answer').on('click', function(e) {
         e.preventDefault();
         var upid = $(this).parent('div').attr('data-answer-id');
-        var qid = $(this).closest('#edit_answer').attr('data-que-id');
+        var qid = $(this).closest('form').attr('data-que-id');
+        
+        var str = $('#answer_content').val();
+        str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
         
         if(confirm('정보를 수정 하시겠습니까?')) {
             $.ajax({
                 url: '/qna/answer/' + upid,
                 type: 'patch',
                 data: {
-                    content: $('#answer_content').val(),
+                    content: str,
                 },
                 success: function() {
                     location.href = '/qna/' + qid;
@@ -81,13 +83,17 @@ $(document).ready(function(){
     // 답변 삭제
     $('#del_ans').on('click', function() {
         var did = $(this).parent('div').attr('data-ans-id');
+        var sid = $(this).parent('div').attr('data-ques-id');
 
        if(confirm('삭제하시겠습니까')) {
             $.ajax({
                 url: "/qna/answer/" + did,
                 type: 'DELETE',
-                success: function() {
-                    location.href = '/qna/' + did;
+                success: function(data) {
+                    location.href = '/qna/' + sid;
+                },
+                error:function(request,status,error){
+                    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                 }
             });
         }

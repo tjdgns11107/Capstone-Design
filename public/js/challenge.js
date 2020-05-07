@@ -30,10 +30,7 @@ $(document).ready(function(){
             success: function() {
                 location.href = '/join_challenges?id=' + uid;
 
-            },
-            error:function(request,status,error){
-                console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-            },
+            }
         });
 
     });
@@ -106,6 +103,21 @@ $(document).ready(function(){
             success: function() {
                 location.href = "/challenges"
             }
+        });
+    });
+
+    $('.join_tr').on('click',function() {
+        var sid = $(this).attr('data-cs-id');
+
+        $.ajax({
+            url: '/join_challenges/' + sid,
+            type: 'get',
+            success: function() {
+                location.href = "/join_challenges/" + sid;
+            },
+            error:function(request,status,error){
+                console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            },
         });
     });
 

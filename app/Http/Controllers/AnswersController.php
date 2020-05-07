@@ -26,7 +26,10 @@ class AnswersController extends Controller
     {
         $question = \App\Question::where('id', '=', $request->id)->first();
 
-        return view('answers.create', compact('question'));
+        return view('answers.create', [
+            'question' => $question,
+            'menu' => '답변 등록',
+        ]);
     }
 
     /**
@@ -66,7 +69,10 @@ class AnswersController extends Controller
     {
         $answer = \App\Answer::where('id', '=', $id)->first();
         
-        return view('answers.edit', compact('answer'));
+        return view('answers.edit', [
+            'answer' => $answer,
+            'menu' => '답변 수정',
+        ]);
     }
 
     /**
@@ -96,8 +102,9 @@ class AnswersController extends Controller
      */
     public function destroy($id)
     {
-        \App\Answer::where('target_id','=',$id)->delete();
-        $question = \App\Question::where('id','=',$id)->first();
+        $ques = \App\Answer::where('id','=',$id)->first()->target_id;
+        \App\Answer::where('id','=',$id)->delete();
+        $question = \App\Question::where('id','=',$ques)->first();
 
         return view('questions.show', compact('question'));
     }

@@ -14,7 +14,13 @@
         <div class="form-group {{ $errors->has('product_price') ? 'has-error' : '' }}">
             <label for="product_price">제품 가격</label>
             <div id="product_price" class="form-control">{{ $product->product_price }}</div>
+        </div>
+        
+        <br>
 
+        <div class="form-group {{ $errors->has('product_image') ? 'has-error' : '' }}">
+            <label for="product_image">제품 가격</label>
+            <div id="product_image" class="form-control">{{ $product->product_image }}</div>
         </div>
         
         <br>
