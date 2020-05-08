@@ -15,12 +15,12 @@
     <header>
         <div id="top_nav">
             <div class="top_bar" id="challenge">챌린지</div>
-            <div class="top_bar" id="products">주문</div>
+            <div class="top_bar" id="products">제품</div>
             <div class="top_bar" id="qna">QnA</div>
             @if(Auth::user())
                 <div class="top_bar">통계</div>
                 <div class="top_bar" id="information">{{ Auth::user()->user_id }}</div>
-                <div class="top_bar" id="orders" data-user-id="{{Auth::user()->id}}">결제 내역</div>
+                <div class="top_bar" id="orders" data-user-id="{{Auth::user()->id}}">주문</div>
                 <div class="top_bar" id="logout">로그아웃</div>
             @else                
                 <div class="top_bar" id="login">로그인</div>

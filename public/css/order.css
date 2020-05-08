@@ -1,14 +1,4 @@
-#order_index {
-    text-align: left;
-    margin: 50px 200px;
-    font-size: 20px;
-}
-
-.order_div {
-    border: 1px solid gray;
-    margin: 5px 100px;
-    padding: 10px;
-}
+/* 제품 페이지 - 테이블 */
 
 table, th, td {
     border: 1px solid gray;
@@ -19,6 +9,9 @@ th, td {
     padding: 10px 20px;
 }
 
+.ord_index {
+    margin: 50px auto;
+}
 #product_th {
     width: 100px;
 }
@@ -50,6 +43,7 @@ th, td {
     width: 100%;
     height: 47%;
     margin: 3px 0;
+    cursor: pointer;
 }
 
 .order_bar {
@@ -66,4 +60,116 @@ th, td {
 
 #order_content {
     font-size: 12px;
+}
+
+.order_div {
+    border: 1px solid gray;
+    margin: 5px 100px;
+    padding: 10px;
+}
+
+
+/* 제품 구매 페이지 */
+
+#order_post {
+    margin: 50px;
+}
+
+.order_div {
+    text-align: left;
+    padding: 30px;
+    font-size: 20px;
+    margin: 0 auto;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.product_bar {
+    width: 740px;
+}
+
+#send_user, #send_address {
+    width: 800px;
+}
+
+.submit_btn {
+    margin: 30px;
+}
+
+#buy_product, #save_order {
+    width: 700px;
+    height: 60px;
+    font-size: 20px;
+    border: 0;
+    background-color: gray;
+    margin: 30px;
+    cursor: pointer;
+}
+
+/* 주문 확인 페이지 */
+#show_order {
+    margin: 100px;
+}
+
+.s_ord_th {
+    height: 80px;
+    margin: 10px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.order_title {
+    width: 120px;
+    height: 70px;
+    margin: 10px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.order_content {
+    width: 780px;
+    height: 70px;
+    margin: 10px;
+    font-size: 20px;
+}
+
+.order_nav {
+    margin: 100px auto;
+}
+
+.show_btn {
+    width:250px;
+    height: 50px;
+    font-size: 18px;
+    background-color: gray;
+    border: 0;
+    margin: 10px;
+    cursor: pointer;
+}
+
+/* 주문 수정 페이지 */
+
+#edit_form {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+#user_num {
+    margin: 50px auto;
+}
+
+.order_inline_1 {
+    width: 120px;
+    height: 70px;
+    margin: 10px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.order_inline_2 {
+    width: 780px;
+    height: 70px;
+    margin: 10px;
+    font-size: 20px;
+    text-align: center;
 }

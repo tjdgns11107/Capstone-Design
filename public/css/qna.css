@@ -37,6 +37,10 @@ th, td {
     text-align: center;
 }
 
+.text_1 {
+    cursor: pointer;
+}
+
 #add_ques {
     width: 300px;
     height: 70px;
@@ -44,6 +48,7 @@ th, td {
     background-color: lightgreen;
     border: 0;
     margin: 30px;
+    cursor: pointer;
 }
 
 /* 질문 생성, 수정 페이지 */
@@ -66,18 +71,14 @@ th, td {
     resize: none;
 }
 
-.tag {
-    margin: 30px;
-    font-size: 20px;
-}
-
-#save_question, #update_ques {
+#save_question, #update_ques, #save_answer, #update_answer {
     width: 700px;
     height: 60px;
     background-color: lightgreen;
     font-size: 20px;
     border: 0;
     margin: 30px;
+    cursor: pointer;
 }
 
 /* 질문 내용 페이지 */
@@ -114,14 +115,14 @@ th, td {
     margin: auto;
 }
 
-#ques_alt, #ques_del, #edit_ans, #del_ans,
-#add_answer, #back_qna, #save_answer, #update_answer {
-    width: 160px;
+.qna_btn {
+    width: 150px;
     height: 40px;
-    margin: 50px auto;
+    margin: 50px 10px;
     font-size: 20px;
     background-color: lightgreen;
     border: 0;
+    cursor: pointer;
 }
 
 .show_question {
@@ -140,6 +141,10 @@ th, td {
     margin: 0 auto;
     border: 1px solid lightgreen;
     border-radius: 10px;
+}
+
+#save_id {
+    margin: 50px auto;
 }
 
 .create_ans {

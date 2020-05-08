@@ -35,7 +35,10 @@ class OrdersController extends Controller
     public function create(Request $request) {
         $product = \App\Product::where('id', '=', $request->id)->first();
 
-        return view('orders.create', compact('product'));
+        return view('orders.create', [
+            'product' => $product,
+            'menu' => '제품 주문',
+        ]);
     }
 
     /**
@@ -82,7 +85,10 @@ class OrdersController extends Controller
     {
         $order = \App\Order::where('id','=',$id)->first();
 
-        return view('orders.edit', compact('order'));
+        return view('orders.edit', [
+            'order' => $order,
+            'menu' => '주문 수정',
+        ]);
     }
 
     /**

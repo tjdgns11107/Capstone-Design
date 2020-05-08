@@ -4,58 +4,36 @@
 
     <div id="showDiv">
         
-        <div class="form-group {{ $errors->has('product_title') ? 'has-error' : '' }}">
-            <label for="product_title">제품 명</label>
-            <div id="product_title" class="form-control">{{ $product->product_title }}</div>
+        <div class="show_pro form-group {{ $errors->has('title') ? 'has-error' : '' }}">
+            <div class="tag"><label for="title">제품 명</label></div>
+            <div id="title" class="form-control">{{ $product->product_title }}</div>
+        </div>
+
+        <div class="show_pro form-group {{ $errors->has('price') ? 'has-error' : '' }}">
+            <div class="tag"><label for="price">제품 가격</label></div>
+            <div id="price" class="form-control">{{ $product->product_price }}</div>
+        </div>
+
+        <div class="show_pro form-group {{ $errors->has('content') ? 'has-error' : '' }}">
+            <div class="tag"><label for="content">제품 설명</label></div>
+            <pre id="content" class="form-control">{{ $product->product_content }}</pre>
         </div>
         
-        <br>
-
-        <div class="form-group {{ $errors->has('product_price') ? 'has-error' : '' }}">
-            <label for="product_price">제품 가격</label>
-            <div id="product_price" class="form-control">{{ $product->product_price }}</div>
-        </div>
-        
-        <br>
-
-        <div class="form-group {{ $errors->has('product_image') ? 'has-error' : '' }}">
-            <label for="product_image">제품 가격</label>
-            <div id="product_image" class="form-control">{{ $product->product_image }}</div>
-        </div>
-        
-        <br>
-
-        <div class="form-group {{ $errors->has('product_content') ? 'has-error' : '' }}">
-            <label for="product_content">제품 설명</label>
-            <div id="product_content" class="form-control">{{ $product->product_content }}</div>
+        <div id="date_bar">
+            <div class="date">작성일 : {{ $product->created_at }}</div>
+            <div class="date">수정일 : {{ $product->updated_at }}</div>
         </div>
 
-        <br>
-        
-        <div>
-            <div>작성일 : {{ $product->created_at }}</div>
-            <div>수정일 : {{ $product->updated_at }}</div>
-        </div>
-
-        <br>
-
-        <div>
+        <div class="show_pro" data-pro-id="{{ $product->id }}">
             @if(Auth::user())
-                <button id="order" data-ord-id="{{ $product->id }}">주문하기</button>
+                <button id="order" class="show_btn" data-ord-id="{{ $product->id }}">주문하기</button>
+                @if(Auth::user()->admin)
+                    <button class="alterProduct show_btn">제품 수정</button>
+                    <button class="deleteProduct show_btn">제품 삭제</button>
+                @endif
             @endif
-            <button id="backProducts">목록으로</button>
+            <button id="backProducts" class="show_btn">목록으로</button>
         </div>
-        
-        @if(Auth::user())
-            @if(Auth::user()->admin)
-                <br>
-
-                <div data-pro-id="{{ $product->id }}">
-                    <button class="alterProduct">제품 수정</button>
-                    <button class="deleteProduct">제품 삭제</button>
-                </div>
-            @endif
-        @endif
 
     </div>
 
@@ -66,3 +44,11 @@
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="/js/product.js"></script>
 <script src="/js/order.js"></script>
+<script>
+    $(document).ready(function() {
+        var str = $('#content').html();
+        str = str.split('&lt;br/&gt;').join("\n");
+        $('#content').html(str);
+    });
+</script>
+<link rel="stylesheet" href="/css/product.css">

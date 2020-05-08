@@ -3,51 +3,41 @@
 @section('content')
 
 
-    <div>주문 수정</div>
-
-    <br>
-
     <form id="edit_form" class="form__auth" data-ord-id="{{$order->id}}">
         {!! csrf_field() !!}
-        {!! method_field('PATCH') !!}
     
-        <div>
-            <label for="order_id">주문 번호</label>
-            <div id="order_id">{{ $order->id }}</div>
-        </div>
+        <table align="center">
+            <tr>
+                <td class="order_inline_1">주문 번호</td>
+                <td class="order_inline_2">{{ $order->id }}</td>
+            </tr>
+            <tr>
+                <td class="order_inline_1">제품 명</td>
+                <td class="order_inline_2">{{ $order->product->product_title }}</td>
+            </tr>
+            <tr>
+                <td class="order_inline_1">제품 가격</td>
+                <td class="order_inline_2">{{ $order->product->product_price }}</td>
+            </tr>
+            <tr>
+                <td class="order_inline_1">주문자</td>
+                <td class="order_inline_2">{{ $order->user->user_id }}</td>
+            </tr>
+            <tr>
+                <td class="order_inline_1">주문 날짜</td>
+                <td class="order_inline_2">{{ $order->order_date }}</td>
+            </tr>
+        </table>
 
-        <br>
-        
-        <div>
-            <label for="order_product_title">제품 명</label>
-            <div id="order_product_title">{{ $order->product->product_title }}</div>
-        </div>
-
-        <br>
-
-        <div>
-            <label for="order_product_price">제품 가격</label>
-            <div id="order_product_price">{{ $order->product->product_price }}</div>
-        </div>
-
-        <br>
-       
-        <div>
-            <label for="buy_user">주문자</label>
-            <div id="buy_user">{{ $order->user->user_id }}</div>
-        </div>
-        
-        <br>
-        
         <div class="form-group {{ $errors->has('send_user') ? 'has-error' : '' }}">
-            <label for="send_user">받는 사람</label>
-            <input type="text" name="send_user" id="send_user" class="form-control" value="{{ old('send_user', $order->send_user) }}" autofocus />
+            <div class="tag"><label for="send_user">받는 사람</label></div>
+            <input type="text" name="send_user" id="send_user" class="form-control order_div" value="{{ old('send_user', $order->send_user) }}" autofocus />
             {!! $errors->first('send_user', '<span class="form-error">:message</span>') !!}
         </div>
 
         <div class="form-group {{ $errors->has('send_address') ? 'has-error' : '' }}">
-            <label for="send_address">배송 주소</label>
-            <input type="text" name="send_address" id="send_address" class="form-control" value="{{ old('send_address', $order->send_address) }}" />
+            <div class="tag"><label for="send_address">배송 주소</label></div>
+            <input type="text" name="send_address" id="send_address" class="form-control order_div" value="{{ old('send_address', $order->send_address) }}" />
             {!! $errors->first('send_address', '<span class="form-error">:message</span>') !!}
         </div>
 
@@ -63,3 +53,4 @@
 
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="/js/order.js"></script>
+<link rel="stylesheet" href="/css/order.css">

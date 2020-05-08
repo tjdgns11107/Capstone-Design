@@ -51,7 +51,6 @@ $(document).ready(function(){
                 payment:0,
             },
             success: function(data) {
-                console.log(data);
                 alert('주문이 완료되었습니다.');
                 location.href = '/orders/' + data;
             }
@@ -74,7 +73,7 @@ $(document).ready(function(){
 
     // 목록으로 이동
     $('#back_order').on('click', function() {
-        var oid = $(this).closest('#show_order').attr('data-use-id');
+        var oid = $(this).parent('div').attr('data-use-id');
         
         $.ajax({
             url: "/orders",
@@ -116,7 +115,7 @@ $(document).ready(function(){
                 data: {
                     user: $('#send_user').val(),
                     address: $('#send_address').val(),
-                    user_id: $(this).closest('#user_num').attr('data-use-id'),
+                    user_id: $(this).parent('div').attr('data-use-id'),
                 },
                 success: function() {
                     location.href = '/orders/' + uid;
@@ -127,8 +126,8 @@ $(document).ready(function(){
 
     // 주문 삭제
     $('.delete_order').on('click', function() {
-        var did = $(this).closest('.order_bar').attr('data-ord-id');
-        var uid = $(this).closest('.order_tr').attr('data-use-id');
+        var did = $(this).parent('div').attr('data-ord-id');
+        var uid = $(this).parent('div').attr('data-use-id');
 
         console.log(did, uid);
         

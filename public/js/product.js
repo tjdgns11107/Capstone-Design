@@ -2,7 +2,6 @@ $(document).ready(function(){
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-            'Content-type': 'text/html;charset=ISO-8859-1',
         }
     });
 
@@ -21,17 +20,19 @@ $(document).ready(function(){
     $('#saveProduct').on('click', function(e) {
         e.preventDefault();
 
+        var str = $('#product_content').val();
+        str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+
         $.ajax({
             url: "/products",
             type: 'POST',
             data: {
                 title: $('#product_title').val(),
                 price: $('#product_price').val(),
-                content: $('#product_content').val(),
+                content: str,
             },
-            success: function(data) {
-                // location.href = '/products';
-                console.log(data);
+            success: function() {
+                location.href = '/products';
             },
             error:function(request,status,error){
                 console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -40,8 +41,10 @@ $(document).ready(function(){
     });
 
     // 제품 보기
-    $('.watchProduct').on('click', function() {
-        var sid = $(this).parent('div').attr('data-pro-id');
+    $('.pro_td').on('click', function() {
+        var sid = $(this).parent('tr').attr('data-pro-id');
+
+        console.log(sid);
         
         $.ajax({
             url: '/products/' + sid,
@@ -59,7 +62,7 @@ $(document).ready(function(){
 
     // 제품 수정 페이지
     $('.alterProduct').on('click', function() {
-        var eid = $(this).parent('div').attr('data-pro-id');
+        var eid = $(this).closest('.show_pro').attr('data-pro-id');
         
         $.ajax({
             url: '/products/' + eid + "/edit",
@@ -73,6 +76,10 @@ $(document).ready(function(){
     // 제품 업데이트
     $('#updateProduct').on('click', function(e) {
         e.preventDefault();
+        
+        var str = $('#product_content').val();
+        str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+
         var upid = $('#updateProduct').closest('#editProduct').attr('data-up-id');
 
         if(confirm('정보를 수정 하시겠습니까?')) {
@@ -82,7 +89,7 @@ $(document).ready(function(){
                 data: {
                     title: $('#product_title').val(),
                     price: $('#product_price').val(),
-                    content: $('#product_content').val(),
+                    content: str,
                 },
                 success: function() {
                     location.href = '/products/' + upid;
@@ -93,7 +100,7 @@ $(document).ready(function(){
 
     // 제품 삭제
     $('.deleteProduct').on('click', function() {
-        var did = $(this).parent('div').attr('data-pro-id');
+        var did = $(this).closest('.show_pro').attr('data-pro-id');
         
         if(confirm('삭제하시겠습니까')) {
             $.ajax({

@@ -34,7 +34,9 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        return view('products.create', [
+            'menu' => '제품 등록',
+        ]);
     }
 
     /**
@@ -77,7 +79,10 @@ class ProductsController extends Controller
     {
         $product = \App\Product::where('id','=',$id)->first();
 
-        return view('products.edit', compact('product'));
+        return view('products.edit', [
+            'product' => $product,
+            'menu' => '제품 수정',
+        ]);
     }
 
     /**

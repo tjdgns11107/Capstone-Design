@@ -21,34 +21,33 @@
 
         @if(isset($answer))
             <pre class="ans_content" class="form-control">{{ $answer->answer_content }}</pre>
+            <div class="show_question" data-ques-id="{{ $question->id }}" data-ans-id="{{ $answer->id }}">
             @if(Auth::user())
-                <div  class="show_question" data-ques-id="{{ $question->id }}" data-ans-id="{{ $answer->id }}">
                 @if(Auth::user()->id == $question->user_id)
-                        <button id="ques_alt">글 수정</button>
-                        <button id="ques_del">글 삭제</button>
+                        <button id="ques_alt" class="qna_btn">글 수정</button>
+                        <button id="ques_del" class="qna_btn">글 삭제</button>
                 @endif
                 @if(Auth::user()->admin)
-                        <button id="edit_ans">답글 수정</button>
-                        <button id="del_ans">답글 삭제</button>
+                        <button id="edit_ans" class="qna_btn">답글 수정</button>
+                        <button id="del_ans" class="qna_btn">답글 삭제</button>
                 @endif
             @endif
         @else
             <div class="ans_content">답변이 없습니다.</div>
             @if(Auth::user())
-                <div class="show_question" data-ques-id="{{ $question->id }}">@if(Auth::user()->id == $question->user_id)
-                    <button id="ques_alt">글 수정</button>
-                    <button id="ques_del">글 삭제</button>
-            @endif
+                <div class="show_question" data-ques-id="{{ $question->id }}">
+                @if(Auth::user()->id == $question->user_id)
+                    <button id="ques_alt" class="qna_btn">글 수정</button>
+                    <button id="ques_del" class="qna_btn">글 삭제</button>
+                @endif
                 @if(Auth::user()->admin)      
-                    <button id="add_answer">답변 달기</button>
-                @else
-                    <div class="show_question">
+                    <button id="add_answer" class="qna_btn">답변 달기</button>
                 @endif
             @else
                 <div class="show_question">
             @endif
         @endif
-            <button id="back_qna">목록으로</button>
+            <button id="back_qna" class="qna_btn">목록으로</button>
         </div>
 
     </div>

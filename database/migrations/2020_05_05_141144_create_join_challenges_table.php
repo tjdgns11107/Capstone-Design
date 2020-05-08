@@ -20,7 +20,7 @@ class CreateJoinChallengesTable extends Migration
             $table->date('join_date');
             $table->string('join_term');
             $table->unsignedBigInteger('entry_fee');
-            $table->bigInteger('achivement')->nullable();
+            $table->unsignedBigInteger('achivement')->nullable();
             $table->timestamps();
 
             $table->foreign('challenge_id')->references('id')

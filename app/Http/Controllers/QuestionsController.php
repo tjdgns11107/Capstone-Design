@@ -47,13 +47,13 @@ class QuestionsController extends Controller
      */
     public function store(QuestionsRequest $request)
     {
-        $product = \App\Question::create([
+        $question = \App\Question::create([
             'user_id' => $request->user_id,
             'question_title' => $request->title,
             'question_content' => $request->content,
         ]);
 
-        return $product;
+        return $question;
     }
 
     /**
@@ -100,10 +100,12 @@ class QuestionsController extends Controller
      */
     public function update(QuestionsRequest $request, $id)
     {
-        $product = \App\Question::where('id', '=', $id)->update([
+        $question = \App\Question::where('id', '=', $id)->update([
             'question_title' => $request->title,
             'question_content' => $request->content,
         ]);
+
+        return $question;
     }
 
     /**
