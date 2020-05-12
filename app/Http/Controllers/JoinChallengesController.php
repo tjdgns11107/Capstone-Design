@@ -54,9 +54,9 @@ class JoinChallengesController extends Controller
         $joinChallenge = \App\JoinChallenge::create([
             'challenge_id' => $request->challenge_id,
             'user_id' => $request->user_id,
-            'join_date' => $request->join_date,
-            'join_term' => $request->join_term,
-            'entry_fee' => $request->entry_fee,
+            'join_date' => $request->date,
+            'join_term' => $request->term,
+            'entry_fee' => $request->fee,
             'achivement' => 0,
         ]);
 
@@ -89,7 +89,12 @@ class JoinChallengesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $join = \App\JoinChallenge::where('id', '=', $id)->first();
+
+        return view('joinChallenges.edit', [
+            'join' => $join,
+            'menu' => '참여 챌린지 수정',
+        ]);
     }
 
     /**
@@ -101,7 +106,14 @@ class JoinChallengesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        \App\JoinChallenge::where('id', '=', $id)->update([
+            'join_date' => $request->date,
+            'join_term' => $request->term,
+            'entry_fee' => $request->fee,
+        ]);
+        $join = \App\JoinChallenge::where('id', '=', $id)->first();
+
+        return view('joinChallenges.show' ,compact('join'));
     }
 
     /**
@@ -110,8 +122,16 @@ class JoinChallengesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        \App\JoinChallenge::where('id', '=', $request->id)->delete();
+        $joins = \App\JoinChallenge::where('user_id', '=', $request->user_id)->get();
+
+        return view('joinChallenges.index', [
+            'joins' => $joins,
+            'menu' => '챌린지 도전 현황',
+        ]);
+
+        return $join_challenges;
     }
 }

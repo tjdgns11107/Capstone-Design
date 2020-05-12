@@ -8,7 +8,7 @@
         
         <div class="edit_ques {{ $errors->has('question_title') ? 'has-error' : '' }}">
             <div class="tag"><label for="question_title">제목</label></div>
-            <input type="text" name="question_title" id="question_title" class="form-control" value="{{ old('question_title', $question->question_title) }}" autofocus />
+            <input type="text" name="question_title" id="question_title" value="{{ old('question_title', $question->question_title) }}" autofocus />
             {!! $errors->first('question_title', '<span class="form-error">:message</span>') !!}
         </div>
 

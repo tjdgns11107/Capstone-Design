@@ -12,9 +12,8 @@ header, nav {
 .top_bar {
     display: inline-block;
     width: 110px;
-    height: 30px;
     font-size: 20px;
-    margin: 0 10px;
+    margin: auto 10px;
     cursor: pointer;
     vertical-align:middle;
 }

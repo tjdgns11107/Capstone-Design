@@ -6,17 +6,17 @@
         
         <div class="show_pro form-group {{ $errors->has('title') ? 'has-error' : '' }}">
             <div class="tag"><label for="title">제품 명</label></div>
-            <div id="title" class="form-control">{{ $product->product_title }}</div>
+            <div id="title">{{ $product->product_title }}</div>
         </div>
 
         <div class="show_pro form-group {{ $errors->has('price') ? 'has-error' : '' }}">
             <div class="tag"><label for="price">제품 가격</label></div>
-            <div id="price" class="form-control">{{ $product->product_price }}</div>
+            <div id="price">{{ $product->product_price }}</div>
         </div>
 
         <div class="show_pro form-group {{ $errors->has('content') ? 'has-error' : '' }}">
             <div class="tag"><label for="content">제품 설명</label></div>
-            <pre id="content" class="form-control">{{ $product->product_content }}</pre>
+            <pre id="content">{{ $product->product_content }}</pre>
         </div>
         
         <div id="date_bar">

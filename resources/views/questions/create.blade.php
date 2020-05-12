@@ -9,7 +9,7 @@
         
         <div class="create_ques {{ $errors->has('question_title') ? 'has-error' : '' }}">
             <div class="tag"><label for="question_title">제목</label></div>
-            <input type="text" name="question_title" id="question_title" class="form-control" autofocus />
+            <input type="text" name="question_title" id="question_title" autofocus />
             {!! $errors->first('question_title', '<span class="form-error">:message</span>') !!}
         </div>
 

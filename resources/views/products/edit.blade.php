@@ -11,13 +11,13 @@
         
         <div class="form-group {{ $errors->has('product_title') ? 'has-error' : '' }}">
             <div class="tag"><label for="product_title">제품 명</label></div>
-            <input type="text" name="product_title" id="product_title" class="form-control" value="{{ old('product_title', $product->product_title) }}" autofocus />
+            <input type="text" name="product_title" id="product_title" value="{{ old('product_title', $product->product_title) }}" autofocus />
             {!! $errors->first('product_title', '<span class="form-error">:message</span>') !!}
         </div>
 
         <div class="form-group {{ $errors->has('product_price') ? 'has-error' : '' }}">
             <div class="tag"><label for="product_price">제품 가격</label></div>
-            <input type="text" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="product_price" id="product_price" class="form-control" value="{{ old('product_price', $product->product_price) }}" />
+            <input type="text" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="product_price" id="product_price" value="{{ old('product_price', $product->product_price) }}" />
             {!! $errors->first('product_price', '<span class="form-error">:message</span>') !!}
         </div>
 

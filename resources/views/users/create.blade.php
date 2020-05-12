@@ -8,32 +8,32 @@
             {!! csrf_field() !!}
             
             <div class="form-group {{ $errors->has('user_id') ? 'has-error' : '' }}">
-                <input type="text" name="user_id" class="form-control" placeholder="아이디" value="{{ old('user_id') }}" autofocus />
+                <input type="text" class="input_bar" name="user_id" placeholder="아이디" value="{{ old('user_id') }}" autofocus />
                 {!! $errors->first('user_id', '<br /><span class="form-error">:message</span>') !!}
             </div>
 
             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                <input type="text" name="name" class="form-control" placeholder="이름" value="{{ old('name') }}">
+                <input type="text" class="input_bar" name="name" placeholder="이름" value="{{ old('name') }}">
                 {!! $errors->first('name', '<br /><span class="form-error">:message</span>') !!}
             </div>
 
             <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-                <input type="email" name="email" class="form-control" placeholder="exam@example.com" value="{{ old('email') }}">
+                <input type="email" class="input_bar" name="email" placeholder="exam@example.com" value="{{ old('email') }}">
                 {!! $errors->first('email', '<br /><span class="form-error">:message</span>') !!}
             </div>
 
             <div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
-                <input type="tel" pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}" name="phone" class="form-control" placeholder="012-(3)456-7890" value="{{ old('phone') }}">
+                <input type="tel" class="input_bar" pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}" name="phone" placeholder="012-(3)456-7890" value="{{ old('phone') }}">
                 {!! $errors->first('phone', '<br /><span class="form-error">:message</span>') !!}
             </div>
 
             <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
-                <input type="password" name="password" class="form-control" placeholder="비밀번호" value="{{ old('password') }}">
+                <input type="password" class="input_bar" name="password" placeholder="비밀번호" value="{{ old('password') }}">
                 {!! $errors->first('password', '<br /><span class="form-error">:message</span>') !!}
             </div>
 
             <div class="form-group {{ $errors->has('password_confirmation') ? 'has-error' : '' }}">
-                <input type="password" name="password_confirmation" class="form-control" placeholder="비밀번호 확인" value="{{ old('password_confirmation') }}">
+                <input type="password" class="input_bar" name="password_confirmation" placeholder="비밀번호 확인" value="{{ old('password_confirmation') }}">
                 {!! $errors->first('password_confirmation', '<br /><span class="form-error">:message</span>') !!}
             </div>
 

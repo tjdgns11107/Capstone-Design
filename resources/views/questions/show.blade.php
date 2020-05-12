@@ -6,12 +6,12 @@
         
         <div class="show_question">
             <div class="tag">제목</div>
-            <div id="title" class="form-control">{{ $question->question_title }}</div>
+            <div id="title">{{ $question->question_title }}</div>
         </div>
 
         <div class="show_question">
             <div class="tag">질문 내용</div>
-            <pre id="content" class="form-control">{{ $question->question_content }}</pre>
+            <pre id="content">{{ $question->question_content }}</pre>
         </div>
 
         <div id="date_bar" class="show_question">
@@ -20,7 +20,7 @@
         </div>
 
         @if(isset($answer))
-            <pre class="ans_content" class="form-control">{{ $answer->answer_content }}</pre>
+            <pre class="ans_content">{{ $answer->answer_content }}</pre>
             <div class="show_question" data-ques-id="{{ $question->id }}" data-ans-id="{{ $answer->id }}">
             @if(Auth::user())
                 @if(Auth::user()->id == $question->user_id)

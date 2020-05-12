@@ -6,12 +6,12 @@
         {!! csrf_field() !!}
 
         <div class="form-group {{ $errors->has('user_id') ? 'has-error' : '' }}">
-            <input type="text" name="user_id" class="form-control" placeholder="아이디" value="{{ old('user_id') }}" autofocus />
+            <input type="text" class="input_bar" name="user_id" placeholder="아이디" value="{{ old('user_id') }}" autofocus />
             {!! $errors->first('user_id', '<br /><span class="form-error">:message</span>') !!}
         </div>
 
         <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
-            <input type="password" name="password"  class="form-control" placeholder="비밀번호" value="{{ old('password') }}">
+            <input type="password" class="input_bar" name="password"  placeholder="비밀번호" value="{{ old('password') }}">
             {!! $errors->first('password', '<br /><span class="form-error">:message</span>') !!}
         </div>
 
