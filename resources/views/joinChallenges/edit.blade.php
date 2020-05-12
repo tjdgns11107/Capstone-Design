@@ -4,10 +4,10 @@
     
     <h1>{{$join->challenge->challenge_title}}</h1>
 
+    <pre id="info">{{ $join->challenge->challenge_information }}</pre>
+
     <form id="edit_join_form">
     {!! csrf_field() !!}
-
-    <div>{{ $join->challenge->challenge_information }}</div>
 
     <div id="user_id" data-user-id="{{ $join->user->id }}">참가자 : {{ $join->user->user_id }}</div>
     <div id="challenge_id" date-join-id="{{$join->challenge->id}}">참가 번호 : {{$join->challenge->id}}</div>
@@ -43,6 +43,10 @@
 <script src="/js/joinChallenge.js"></script>
 <script>
     $(document).ready(function () {   
+        var str = $('#info').html();
+        str = str.split('&lt;br/&gt;').join("\n");
+        $('#info').html(str);
+
         function calDate(date, day, sign) {
             var yy = parseInt(date.substr(0,4), 10);
             var mm = parseInt(date.substr(5, 2), 10);
@@ -55,8 +59,6 @@
                 d = new Date(yy, mm-1, dd-op);
             }
 
-            console.log(d);
-
             yy = d.getFullYear();
             mm = d.getMonth()+1;
             mm = (mm < 10) ? '0' + mm : mm;
@@ -68,8 +70,6 @@
 
         var start_date = $('#join_date').val();
         var day = $('#term').val();
-
-        console.log(start_date, day);
 
         $('#join_term').val(calDate(start_date, day, '+'));
     });

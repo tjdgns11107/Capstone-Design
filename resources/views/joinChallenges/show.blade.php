@@ -15,7 +15,7 @@
         </tr>
         <tr>
             <td class="join_title">챌린지 내용</td>
-            <td class="join_content text_1" id="info">{{ $join->challenge->challenge_information }}</td>
+            <td class="join_content text_1" id="info"><pre>{{ $join->challenge->challenge_information }}</pre></td>
         </tr>
         <tr>
             <td class="join_title">유저 이름</td>
@@ -23,11 +23,15 @@
         </tr>
         <tr>
             <td class="join_title">시작 날짜</td>
-            <td class="join_content text_1">{{ $join->join_date }}</td>
+            <td class="join_content text_1" id="start_join">{{ $join->join_date }}</td>
         </tr>
         <tr>
             <td class="join_title">참여 기간</td>
-            <td class="join_content text_1">{{ $join->join_term }}일</td>
+            <td class="join_content text_1" id="term">{{ $join->join_term }}일</td>
+        </tr>
+        <tr>
+            <td class="join_title">종료 날짜</td>
+            <td class="join_content text_1" id="end_join"></td>
         </tr>
         <tr>
             <td class="join_title">참가 비</td>
@@ -59,6 +63,34 @@
         var str = $('#info').html();
         str = str.split('&lt;br/&gt;').join("\n");
         $('#info').html(str);
+
+        function calDate(date, day, sign) {
+            var yy = parseInt(date.substr(0,4), 10);
+            var mm = parseInt(date.substr(5, 2), 10);
+            var dd = parseInt(date.substr(8), 10);
+            var op = parseInt(day);
+
+            if(sign == '+') {
+                d = new Date(yy, mm-1, dd+op);
+            } else if(sign == '-') {
+                d = new Date(yy, mm-1, dd-op);
+            }
+
+            yy = d.getFullYear();
+            mm = d.getMonth()+1;
+            mm = (mm < 10) ? '0' + mm : mm;
+            dd = d.getDate();
+            dd = (dd < 10) ? '0' + dd : dd; 
+
+            return '' + yy + '-' + mm + '-' + dd;
+        }
+
+        var start_date = $('#start_join').html();
+        var day = $('#term').html();
+
+        console.log(start_date, day, calDate(start_date, day, '+'));
+
+        $('#end_join').html(calDate(start_date, day, '+'));
     });
 </script>
 <link rel="stylesheet" href="/css/challenge.css">

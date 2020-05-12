@@ -194,6 +194,7 @@ $(document).ready(function(){
         });
     });
 
+    // 참여 챌린지 삭제
     $('#del_join').on('click', function() {
         var did = $('#join_id').val();
         var uid = $('#user_id').val();
@@ -211,6 +212,10 @@ $(document).ready(function(){
                 }
             });
         }
+    });
+
+    $('#back_cha').on('click', function() {
+        location.href = '/challenges';
     });
 
 });

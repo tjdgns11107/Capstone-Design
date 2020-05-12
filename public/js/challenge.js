@@ -55,6 +55,11 @@ $(document).ready(function() {
         });
     });
 
+    // 팰린지 페이지로
+    $('#back_chal').on('click', function() {
+        location.href = '/challenges';
+    });
+
     // 챌린지 수정
     $('.edit_chal').on('click', function() {
         var eid = $(this).parent('div').attr('data-cha-id');

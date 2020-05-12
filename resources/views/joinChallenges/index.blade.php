@@ -23,6 +23,8 @@
         @endforelse
     </table>
 
+    <button id="back_cha">챌린지 목록</button>
+
 @include('partials.footer')
 
 @stop

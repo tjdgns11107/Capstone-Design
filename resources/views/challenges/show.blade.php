@@ -22,9 +22,7 @@
         <button class="del_chal">챌린지 삭제</button>
     </div>
 
-    <div class="create_chal">
-        <button type="submit" id="save_chal">챌린지 등록</button>
-    </div>
+    <button id="back_chal">목록으로</button>
     
 @include('partials.footer')
 
