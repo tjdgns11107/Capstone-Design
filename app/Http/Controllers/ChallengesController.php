@@ -47,6 +47,7 @@ class ChallengesController extends Controller
     public function store(Request $request)
     {
         \App\Challenge::create([
+            'challenge_user_id' => $request->user,
             'challenge_title' => $request->title,
             'default_entry_fee' => $request->fee,
             'challenge_information' => $request->content,

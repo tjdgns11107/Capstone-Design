@@ -86,6 +86,7 @@ $(document).ready(function(){
 
             $('#radio_bar').append($label);
             $('#radio_bar').append($input);
+            $('#radio_bar').css('margin', '20px');
         }
         console.log('끝');
         console.log(entry_count);
@@ -104,27 +105,35 @@ $(document).ready(function(){
 
         var start_date = $('#join_date').val();
         var end_date = $('#join_term').val();
-        var entry_fee = $('#entry_fee').val();
-        var test = dateDif(start_date, end_date);
 
-        if(! entry_fee) {
-            entry_fee = 0;
+        if($('input:radio[name="pay_entry_fee"]').is(':checked')) {
+            var entry_fee = $('#entry_fee').val();
+            } else if ($('input:radio[name="not_pay_entry_fee"]').is(':checked')) {        
+            var entry_fee = 0;
+        } else {
+            var entry_fee = $('#default_fee').val();
         }
+        console.log(entry_fee);
 
-        $.ajax({
-            url: '/join_challenges',
-            type: 'post',
-            data: {
-                challenge_id: $('#entry_form').attr('data-chal-id'),
-                user_id: $('#user_id').attr('data-user-id'),
-                date: start_date,
-                term: dateDif(start_date, end_date),
-                fee: entry_fee,
-            },
-            success: function() {
-                location.href = "/challenges"
-            }
-        });
+        if(confirm('챌린지에 도전을 하시겠습니까?')) {
+            $.ajax({
+                url: '/join_challenges',
+                type: 'post',
+                data: {
+                    challenge_id: $('#entry_form').attr('data-chal-id'),
+                    user_id: $('#user_id').attr('data-user-id'),
+                    date: start_date,
+                    term: dateDif(start_date, end_date),
+                    fee: entry_fee,
+                },
+                success: function() {
+                    location.href = "/challenges"
+                },
+                error:function(request,status,error){
+                    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                }
+            });
+        }
     });
 
     // 챌린지 확인
@@ -159,18 +168,16 @@ $(document).ready(function(){
     $('#edit_join').on('click', function() {
         var eid = $('#join_id').val();
 
-        if(confirm('챌린지를 수정 하시겠습니까?')) {
-            $.ajax({
-                url: '/join_challenges/' + eid + '/edit',
-                type: 'get',
-                success: function() {
-                    location.href = '/join_challenges/' + eid + '/edit';
-                },
-                error:function(request,status,error){
-                    console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-                }
-            });
-        }
+        $.ajax({
+            url: '/join_challenges/' + eid + '/edit',
+            type: 'get',
+            success: function() {
+                location.href = '/join_challenges/' + eid + '/edit';
+            },
+            error:function(request,status,error){
+                console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            }
+        });
     });
 
     // 참여 챌린지 수정
@@ -181,17 +188,20 @@ $(document).ready(function(){
         var end_date = $('#join_term').val();
         var eid = $('#challenge_id').attr('date-join-id');
 
-        $.ajax({
-            url: '/join_challenges/' + eid,
-            type: 'patch',
-            data: {
-                date: start_date,
-                term: dateDif(start_date, end_date),
-                fee : $('#entry_fee').val(),
-            }, success: function() {
-                location.href = "/join_challenges/" + eid;
-            }
-        });
+        
+        if(confirm('챌린지를 수정 하시겠습니까?')) {
+            $.ajax({
+                url: '/join_challenges/' + eid,
+                type: 'patch',
+                data: {
+                    date: start_date,
+                    term: dateDif(start_date, end_date),
+                    fee : $('#entry_fee').val(),
+                }, success: function() {
+                    location.href = "/join_challenges/" + eid;
+                }
+            });
+        }
     });
 
     // 참여 챌린지 삭제

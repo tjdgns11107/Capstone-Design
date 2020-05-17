@@ -15,7 +15,7 @@
         </tr>
         <tr>
             <td class="join_title">챌린지 내용</td>
-            <td class="join_content text_1" id="info"><pre>{{ $join->challenge->challenge_information }}</pre></td>
+            <td class="join_content text_1" id="infor"><pre>{{ $join->challenge->challenge_information }}</pre></td>
         </tr>
         <tr>
             <td class="join_title">유저 이름</td>
@@ -43,6 +43,11 @@
         </tr>
     </table>
 
+    <div class="chall_list">
+        <h2>{{ $join->challenge->challenge_title }} 달성률</h2>
+        <canvas id="lineChart"></canvas>
+    </div>
+
     <div>
         @if(Auth::user()->id == $join->user_id)
             <button id="edit_join">챌린지 수정</button>
@@ -60,9 +65,9 @@
 <script src="/js/joinChallenge.js"></script>
 <script>
     $(document).ready(function() {    
-        var str = $('#info').html();
+        var str = $('#infor').html();
         str = str.split('&lt;br/&gt;').join("\n");
-        $('#info').html(str);
+        $('#infor').html(str);
 
         function calDate(date, day, sign) {
             var yy = parseInt(date.substr(0,4), 10);
@@ -91,6 +96,30 @@
         console.log(start_date, day, calDate(start_date, day, '+'));
 
         $('#end_join').html(calDate(start_date, day, '+'));
+
+        var ctxL1 = document.getElementById("lineChart").getContext('2d');
+        var myLineChart1 = new Chart(ctxL1, {
+            type: 'line',
+            data: {
+            labels: [1, 2, 3, 4, 5, 6, 7, 8],
+            datasets: [
+                {
+                label: "달성률",
+                data: [00, 04, 11, 17, 19, 25, 31, 44],
+                backgroundColor: [
+                    'rgba(0, 227, 106, .2)',
+                ],
+                borderColor: [
+                    'rgba(0, 227, 106, .7)',
+                ],
+                borderWidth: 2
+                }
+            ]
+            },
+            options: {
+            responsive: true
+            }
+        });
     });
 </script>
-<link rel="stylesheet" href="/css/challenge.css">
+<link rel="stylesheet" href="/css/joinChallenge.css">

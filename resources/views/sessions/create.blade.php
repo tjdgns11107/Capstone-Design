@@ -6,7 +6,7 @@
         {!! csrf_field() !!}
 
         <div class="form-group {{ $errors->has('user_id') ? 'has-error' : '' }}">
-            <input type="text" class="input_bar" name="user_id" placeholder="아이디" value="{{ old('user_id') }}" autofocus />
+            <input type="text" class="input_bar" name="user_id" placeholder="이메일" value="{{ old('user_id') }}" autofocus />
             {!! $errors->first('user_id', '<br /><span class="form-error">:message</span>') !!}
         </div>
 

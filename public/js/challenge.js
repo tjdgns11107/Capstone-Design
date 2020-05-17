@@ -25,11 +25,13 @@ $(document).ready(function() {
         
         var str = $('#challenge_information').val();
         str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+        console.log(typeof($('#challenge_user').val()));
 
         $.ajax({
             url: '/challenges',
             type: 'post',
             data: {
+                user: $('#challenge_user').val(),
                 title: $('#challenge_title').val(),
                 fee: $('#default_entry_fee').val(),
                 content: str,
@@ -43,8 +45,8 @@ $(document).ready(function() {
     });
 
     // 챌린지 보기
-    $('.show_chal').on('click', function() {
-        var sid = $(this).parent('div').attr('data-cha-id');
+    $('.title').on('click', function() {
+        var sid = $(this).attr('data-chall-id');
 
         $.ajax({
             url: '/challenges/' + sid,

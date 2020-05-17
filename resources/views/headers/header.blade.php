@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/css/header.css">
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="/js/header.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
     <title>{{ config('app.name', 'Laravel') }}</title>
 </head>
 <body>
@@ -20,7 +22,7 @@
             @if(Auth::user())
                 <div class="top_bar" id="challenge">챌린지</div>
                 <div class="top_bar">통계</div>
-                <div class="top_bar" id="information">{{ Auth::user()->user_id }}</div>
+                <div class="top_bar" id="information">{{ Auth::user()->name }}</div>
                 <div class="top_bar" id="orders" data-user-id="{{Auth::user()->id}}">주문</div>
                 <div class="top_bar" id="logout">로그아웃</div>
             @else                

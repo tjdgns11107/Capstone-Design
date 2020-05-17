@@ -40,3 +40,7 @@ header, nav {
     margin: 30px;
     font-size: 20px;
 }
+
+button {
+    cursor: pointer;
+}

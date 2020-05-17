@@ -1,0 +1,171 @@
+#entry_div {
+    margin: 30px;
+}
+
+#entry_form {
+    margin: 30px;
+}
+
+
+
+table, th, td {
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px 20px;
+}
+
+#join_th {
+    width: 70px;
+}
+
+#join_name_th {
+    width: 300px;
+}
+
+#join_date_th {
+    width: 150px;
+}
+
+#join_term_th {
+    width: 100px;
+}
+
+#join_fee_th {
+    width: 120px;
+}
+
+.join_tr {
+    height: 70px;
+    cursor: pointer;
+}
+
+.text_1 {
+    text-align: center;
+}
+
+.text_2 {
+    text-align: right;
+}
+
+#apply_challenge {
+    margin: 30px;
+}
+
+#info {
+    text-align: left;
+    width: 740px;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #999999;
+    border-radius: 10px;
+} 
+
+.right_text {
+    text-align: right;
+    margin: 30px 150px;
+}
+
+#user_id {
+    display: inline;
+}
+
+.date_bar {
+    width: 740px;
+    margin: 30px auto;
+    padding: 30px;
+    border: 1px solid #999999;
+    border-radius: 10px;
+
+}
+
+#join_date, #join_term {
+    margin: 30px;
+    width: 200px;
+    padding: 5px;
+    font-size: 15px;
+}
+
+.date_text {
+    display: inline;
+}
+
+.fee_data {
+    width: 740px;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #999999;
+    border-radius: 10px;
+}
+
+#back_cha {
+    width: 300px;
+    height: 50px;
+    margin: 30px;
+    background-color: #80ffb9;
+    font-size: 18px;
+    border: none;
+}
+
+.entry_fee {
+    display: inline;
+    margin: 20px;
+}
+
+#show_join {
+    margin: 50px auto;
+}
+
+#apply_challenge, #save_join {
+    width: 300px;
+    height: 70px;
+    margin: 30px;
+    background-color: #80ffb9;
+    font-size: 18px;
+    border: none;
+}
+
+.s_join_th {
+    padding: 20px;
+    font-size: 20px;
+}
+
+.join_title {
+    width: 180px;
+    padding: 20px;
+    text-align: center;
+}
+
+.join_content {
+    width: 480px;
+    padding: 20px 30px;
+    font-size: 15px;
+}
+
+#edit_join, #del_join, #back_join {
+    width: 230px;
+    margin: 20px;
+    background-color: #80ffb9;
+    border: 0px;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.edit_chall {
+    text-align: right;
+    margin: 30px auto;
+    padding: 0 200px;
+}
+
+#challenge_id {
+    display: inline;
+    margin: 0 20px;
+}
+
+.chall_list {
+    width: 800px;
+    height: 400px;
+    margin: 70px auto;
+}

@@ -45,6 +45,10 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
+    public function challenges() {
+        return $this->hasMany(Challenges::class);
+    }
+
     public function joinChallenges() {
         return $this->hasMany(JoinChallenges::class);
     }
