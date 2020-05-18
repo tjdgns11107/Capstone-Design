@@ -15,7 +15,7 @@
     </div>
 
     <div class="date_bar">
-        <div class="form-group {{ $errors->has('join_date') ? 'has-error' : '' }}">
+        <div class="form_group {{ $errors->has('join_date') ? 'has-error' : '' }}">
             <label for="join_date">챌린지 시작 날짜</label>
             <input type="date" name="join_date" id="join_date" value="{{ old('join_date', $join->join_date) }}"/>
             {!! $errors->first('join_date', '<span class="form-error">:message</span>') !!}
@@ -23,7 +23,7 @@
 
         <input type="hidden" id="term" value="{{$join->join_term}}">
 
-        <div class="form-group {{ $errors->has('join_term') ? 'has-error' : '' }}">
+        <div class="form_group {{ $errors->has('join_term') ? 'has-error' : '' }}">
             <label for="join_term">챌린지 종료 날짜</label>
             <input type="date" name="join_term" id="join_term" value="{{ old('join_date') }}"/>
             {!! $errors->first('join_term', '<span class="form-error">:message</span>') !!}

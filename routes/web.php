@@ -82,3 +82,16 @@ Route::resource('qna/answer', 'AnswersController');
 Route::resource('challenges', 'ChallengesController');
 
 Route::resource('join_challenges', 'JoinChallengesController');
+
+// 통계 페이지
+
+Route::get('stats', 'PostureHistoryController@index');
+
+// today 통계 ajax
+Route::get('stats/today', 'PostureHistoryController@todayAjax');
+
+// week 통계 ajax
+Route::get('stats/week', 'PostureHistoryController@weekAjax');
+
+// month 통계 ajax
+Route::get('stats/month', 'PostureHistoryController@monthAjax');

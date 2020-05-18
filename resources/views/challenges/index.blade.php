@@ -8,7 +8,7 @@
         <div class="chall_box">
             <h1 class="title" data-chall-id="{{ $challenge->id }}">{{ $challenge->challenge_title }}</h1>
             <!-- <pre class="infor">{{ $challenge->challenge_information }}</pre> -->
-            @if(Auth::user() && Auth::user()->id == $challenge->user->id)
+            @if(Auth::user() && Auth::user()->admin)
                 <div class="entry_challenge" data-cha-id="{{ $challenge->id }}">
                     <button class="edit_chal">챌린지 수정</button>
                     <button class="del_chal">챌린지 삭제</button>
@@ -20,7 +20,7 @@
     @endforeach
     
     <div id="list_bar">
-    @if(Auth::user())
+    @if(Auth::user() && Auth::user()->admin)
         <button id="add_chal">챌린지 추가</button>
     @endif
         <button id="challenge_list" data-part-id="{{Auth::user()->id}}">챌린지 현황</button>

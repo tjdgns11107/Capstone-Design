@@ -21,7 +21,7 @@
             <div class="top_bar" id="qna">QnA</div>
             @if(Auth::user())
                 <div class="top_bar" id="challenge">챌린지</div>
-                <div class="top_bar">통계</div>
+                <div class="top_bar" id="posture">통계</div>
                 <div class="top_bar" id="information">{{ Auth::user()->name }}</div>
                 <div class="top_bar" id="orders" data-user-id="{{Auth::user()->id}}">주문</div>
                 <div class="top_bar" id="logout">로그아웃</div>

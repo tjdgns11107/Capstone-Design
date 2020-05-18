@@ -30,6 +30,11 @@ $(document).ready(function(){
         location.href = "/challenges";
     });
 
+    // 통계 페이지
+    $('#posture').on('click', function() {
+        location.href = "/stats";
+    });
+
     // 주문 내역 확인 페이지
     $('#orders').on('click', function() {
         var oid = $(this).attr('data-user-id');

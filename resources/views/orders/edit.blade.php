@@ -29,19 +29,19 @@
             </tr>
         </table>
 
-        <div class="form-group {{ $errors->has('send_user') ? 'has-error' : '' }}">
+        <div class="form_group {{ $errors->has('send_user') ? 'has-error' : '' }}">
             <div class="tag"><label for="send_user">받는 사람</label></div>
             <input type="text" name="send_user" id="send_user" class="form-control order_div" value="{{ old('send_user', $order->send_user) }}" autofocus />
             {!! $errors->first('send_user', '<span class="form-error">:message</span>') !!}
         </div>
 
-        <div class="form-group {{ $errors->has('send_address') ? 'has-error' : '' }}">
+        <div class="form_group {{ $errors->has('send_address') ? 'has-error' : '' }}">
             <div class="tag"><label for="send_address">배송 주소</label></div>
             <input type="text" name="send_address" id="send_address" class="form-control order_div" value="{{ old('send_address', $order->send_address) }}" />
             {!! $errors->first('send_address', '<span class="form-error">:message</span>') !!}
         </div>
 
-        <div id="user_num" class='form-group' data-use-id='{{$order->buy_user}}'>
+        <div id="user_num" class='form_group' data-use-id='{{$order->buy_user}}'>
             <button type="submit" id="save_order">주문 수정</button>
         </div>
 

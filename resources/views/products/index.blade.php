@@ -14,7 +14,7 @@
             <tr class="pro_tr show_pro" data-pro-id="{{ $product->id }}">
                 <td class="text_1 pro_td">{{ $product->id }}</td>
                 <td class="text_1 title_bar pro_td">{{ $product->product_title }}</td>
-                <td class="text_2 pro_td">{{ $product->product_price }}</td>
+                <td class="text_2 pro_td">￦ {{ $product->product_price }}</td>
                 <td class="text_1 pro_td">{{ $product->created_at }}</td>
                 @if(Auth::user() && Auth::user()->admin)
                     <td>

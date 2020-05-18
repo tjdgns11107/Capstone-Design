@@ -20,7 +20,7 @@
     <div id="chal_bar " data-cha-id="{{ $challenge->id }}">
         <button class="entry_btn">참가하기</button>
         <button id="back_chal">목록으로</button>
-        @if(Auth::user() && Auth::user()->id == $challenge->user->id)
+        @if(Auth::user() && Auth::user()->admin)
             <button class="edit_chal">챌린지 수정</button>
             <button class="del_chal">챌린지 삭제</button>
         @endif

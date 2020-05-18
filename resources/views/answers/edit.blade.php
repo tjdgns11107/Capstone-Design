@@ -17,13 +17,13 @@
             <div id="ans_ques_content">{{$answer->question->question_content}}</div>
         </div>
 
-        <div class="form-group {{ $errors->has('answer_content') ? 'has-error' : '' }}">
+        <div class="form_group {{ $errors->has('answer_content') ? 'has-error' : '' }}">
             <div class="tag"><label for="answer_content">답변 내용</label></div>
             <textarea name="answer_content" id="answer_content" wrap=hard  cols="75" rows="12">{{ old('answer_content', $answer->answer_content) }}</textarea>            
             {!! $errors->first('answer_content', '<span class="form-error">:message</span>') !!}
         </div>
 
-        <div id="save_id" class='form-group' data-answer-id="{{$answer->id}}">
+        <div id="save_id" class='form_group' data-answer-id="{{$answer->id}}">
             <button type="submit" id="update_answer">답변 수정</button>
         </div>
 
